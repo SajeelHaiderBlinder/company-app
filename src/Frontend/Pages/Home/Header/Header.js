@@ -3,6 +3,9 @@ import { Hero } from "../../../Components/Hero/Hero";
 import { Navbar } from "../../../Components/Navbar/Navbar";
 import "./Header.scss";
 import { Discover } from "../../../Components/Discover/Discover";
+import { CommunityBuilder } from "../../../Components/CommuinityBuilder/CommunityBuilder";
+import { CompanyBuilder } from "../../../Components/CompanyBuilder/CompanyBuilder";
+import { ImpactNumbers } from "../../../Components/ImpactNumbers/ImpactNumbers";
 
 export const Header = () => {
   return (
@@ -12,6 +15,9 @@ export const Header = () => {
         <Hero />
       </Stack>
       <Discover />
+      <CommunityBuilder />
+      <CompanyBuilder />
+      <ImpactNumbers />
     </>
   );
 };
