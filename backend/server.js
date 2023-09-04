@@ -6,6 +6,7 @@ const cookieSession = require("cookie-session");
 const session = require("express-session");
 const passportSetup = require("./passport");
 const authRoute = require("./routes/auth");
+const db = require("./database/db");
 
 const app = express();
 
@@ -16,13 +17,7 @@ app.use(
     maxAge: 24 * 60 * 60 * 100,
   })
 );
-// app.use(
-//   session({
-//     secret: "secret",
-//     resave: false,
-//     saveUninitialized: true,
-//   })
-// );
+
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -36,5 +31,6 @@ app.use(
 
 app.use("/auth", authRoute);
 
-const port = 8080;
-app.listen(port, () => console.log(`Listning on PORT: ${port} ...`));
+const PORT = 8080;
+
+app.listen(PORT, () => console.log(`Listening on PORT: ${port} ...`));

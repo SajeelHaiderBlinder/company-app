@@ -16,7 +16,6 @@ import "./Navbar.scss";
 
 export const Navbar = ({ user, setUser }) => {
   const handleLogout = () => {
-    //setUser(null);
     window.open(`http://localhost:8080/auth/logout`, "_self");
   };
   const [anchorEl, setAnchorEl] = useState(null);

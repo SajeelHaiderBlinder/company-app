@@ -19,8 +19,6 @@ passport.use(
       scope: ["profile", "email"],
     },
     function (accessToken, refreshToken, profile, callback) {
-      // console.log("Google authentication callback executed");
-      // console.log("Profile:", profile);
       callback(null, profile);
     }
   )

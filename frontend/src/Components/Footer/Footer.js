@@ -14,14 +14,17 @@ export const Footer = () => {
       sx={{
         background: "linear-gradient(to top, #690073, #bf00c3)",
         padding: "8%",
+        color: "white",
       }}
       spacing={4}
     >
       <Grid container spacing={4}>
         <Grid item xs={12} md={6}>
           <Stack>
-            <Typography variant="h4">NexaPro</Typography>
-            <Typography variant="subtitle1">
+            <Typography variant="h4" color="white">
+              NexaPro
+            </Typography>
+            <Typography variant="subtitle1" color="white">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit.
               Suspendisse varius enim in eros elementum tristique.
             </Typography>
@@ -36,7 +39,7 @@ export const Footer = () => {
             validationSchema={NewsletterSchema}
           >
             <Form>
-              <Typography variant="subtitle1">
+              <Typography variant="subtitle1" color="white">
                 Subscribe to our product details!
               </Typography>
               <Stack direction="row" alignItems="center" spacing={2}>
@@ -55,47 +58,91 @@ export const Footer = () => {
       <Grid container spacing={4}>
         <Grid item xs={12} sm={6} md={3}>
           <Stack spacing={4}>
-            <Typography variant="h6">Product</Typography>
+            <Typography variant="h6" color="white">
+              Product
+            </Typography>
             <Stack spacing={2}>
-              <Typography variant="subtitle1">Home</Typography>
-              <Typography variant="subtitle1">Services</Typography>
-              <Typography variant="subtitle1">About</Typography>
-              <Typography variant="subtitle1">Pricing</Typography>
-              <Typography variant="subtitle1">Case Studies</Typography>
+              <Typography variant="subtitle1" color="white">
+                Home
+              </Typography>
+              <Typography variant="subtitle1" color="white">
+                Services
+              </Typography>
+              <Typography variant="subtitle1" color="white">
+                About
+              </Typography>
+              <Typography variant="subtitle1" color="white">
+                Pricing
+              </Typography>
+              <Typography variant="subtitle1" color="white">
+                Case Studies
+              </Typography>
             </Stack>
           </Stack>
         </Grid>
         <Grid item xs={12} sm={6} md={3}>
           <Stack spacing={4}>
-            <Typography variant="h6">Company</Typography>
+            <Typography variant="h6" color="white">
+              Company
+            </Typography>
             <Stack spacing={2}>
-              <Typography variant="subtitle1">About</Typography>
-              <Typography variant="subtitle1">Contact</Typography>
-              <Typography variant="subtitle1">Team</Typography>
-              <Typography variant="subtitle1">Blog</Typography>
-              <Typography variant="subtitle1">Review</Typography>
+              <Typography variant="subtitle1" color="white">
+                About
+              </Typography>
+              <Typography variant="subtitle1" color="white">
+                Contact
+              </Typography>
+              <Typography variant="subtitle1" color="white">
+                Team
+              </Typography>
+              <Typography variant="subtitle1" color="white">
+                Blog
+              </Typography>
+              <Typography variant="subtitle1" color="white">
+                Review
+              </Typography>
             </Stack>
           </Stack>
         </Grid>
         <Grid item xs={12} sm={6} md={3}>
           <Stack spacing={4}>
-            <Typography variant="h6">Support</Typography>
+            <Typography variant="h6" color="white">
+              Support
+            </Typography>
             <Stack spacing={2}>
-              <Typography variant="subtitle1">Style Guide</Typography>
-              <Typography variant="subtitle1">Licenses</Typography>
-              <Typography variant="subtitle1">Changelog</Typography>
-              <Typography variant="subtitle1">Log in</Typography>
-              <Typography variant="subtitle1">Sign up</Typography>
+              <Typography variant="subtitle1" color="white">
+                Style Guide
+              </Typography>
+              <Typography variant="subtitle1" color="white">
+                Licenses
+              </Typography>
+              <Typography variant="subtitle1" color="white">
+                Changelog
+              </Typography>
+              <Typography variant="subtitle1" color="white">
+                Log in
+              </Typography>
+              <Typography variant="subtitle1" color="white">
+                Sign up
+              </Typography>
             </Stack>
           </Stack>
         </Grid>
         <Grid item xs={12} sm={6} md={3}>
           <Stack spacing={4}>
-            <Typography variant="h6">Contact</Typography>
+            <Typography variant="h6" color="white">
+              Contact
+            </Typography>
             <Stack spacing={2}>
-              <Typography variant="subtitle1">contact@gmail.com</Typography>
-              <Typography variant="subtitle1">1278037092183</Typography>
-              <Typography variant="subtitle1">Location</Typography>
+              <Typography variant="subtitle1" color="white">
+                contact@gmail.com
+              </Typography>
+              <Typography variant="subtitle1" color="white">
+                1278037092183
+              </Typography>
+              <Typography variant="subtitle1" color="white">
+                Location
+              </Typography>
             </Stack>
           </Stack>
         </Grid>

@@ -23,6 +23,7 @@ export const Discover = () => {
           sx={{
             fontWeight: "bold",
             fontSize: { xs: "2.5rem", md: "3rem" },
+            color: "white",
           }}
         >
           Discover your Path to
@@ -31,6 +32,7 @@ export const Discover = () => {
             sx={{
               fontWeight: "bold",
               fontSize: { xs: "2.5rem", md: "3rem" },
+              color: "white",
             }}
           >
             Success
@@ -40,6 +42,7 @@ export const Discover = () => {
           sx={{
             maxWidth: "400px",
             fontSize: { xs: "1rem", md: "1.25rem" },
+            color: "white",
           }}
         >
           In publishing and graphic design, Lorem ipsum is a placeholder text

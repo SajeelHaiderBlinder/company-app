@@ -10,6 +10,7 @@ import { ImpactNumbers } from "../../../Components/ImpactNumbers/ImpactNumbers";
 import "./Header.scss";
 import { Sponsors } from "../../../Components/Sponsors/Sponsors";
 import { Footer } from "../../../Components/Footer/Footer";
+import { Testimonials } from "../../../Components/Testimonials/Testimonials";
 
 export const Header = ({ user, setUser }) => {
   return (
@@ -27,6 +28,7 @@ export const Header = ({ user, setUser }) => {
         <CompanyBuilder />
       </Stack>
       <ImpactNumbers />
+      <Testimonials />
       <Footer />
     </>
   );
