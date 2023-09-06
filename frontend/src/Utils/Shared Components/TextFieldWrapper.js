@@ -14,16 +14,23 @@ export const TextFieldWrapper = ({ name, label, type, height }) => {
     error: meta.touched && Boolean(meta.error),
     helperText: meta.touched && meta.error ? meta.error : "",
     sx: {
-      backgroundColor: "white",
-      borderRadius: "20px", // Set the border radius to 20px
-      "& .MuiInputLabel-root.Mui-focused": {
-        color: "black", // Change label color when focused
-      },
       "& .MuiOutlinedInput-root": {
         borderRadius: "20px", // Round the corners of the input
+        "&:hover fieldset": {
+          borderColor: "#690073", // Change border color on hover
+        },
+        "&.Mui-focused fieldset": {
+          borderColor: "#690073", // Change border color when focused
+        },
       },
-      "& .MuiOutlinedInput-input": {
-        padding: "14px 14px", // Adjust input padding
+      "& .MuiInputLabel-root": {
+        color: "#690073", // Change label text color
+      },
+      "& .MuiInputLabel-root.Mui-focused": {
+        color: "#690073", // Change label text color when focused
+      },
+      "& .MuiOutlinedInput-input::placeholder": {
+        color: "#690073", // Change placeholder text color
       },
     },
   };

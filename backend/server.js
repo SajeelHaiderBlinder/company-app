@@ -33,4 +33,4 @@ app.use("/auth", authRoute);
 
 const PORT = 8080;
 
-app.listen(PORT, () => console.log(`Listening on PORT: ${port} ...`));
+app.listen(PORT, () => console.log(`Listening on PORT: ${PORT} ...`));

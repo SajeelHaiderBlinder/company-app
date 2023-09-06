@@ -8,9 +8,16 @@ import { InputLabel } from "@mui/material";
 import Multiselect from "multiselect-react-dropdown";
 import { useState } from "react";
 import "./Signup.scss";
+
 const initialValues = {
+  fName: "",
+  lName: "",
   email: "",
   password: "",
+  uniName: "",
+  semester: "",
+  degree: "",
+  introYourself: "",
 };
 
 export const SignupStudent = () => {
@@ -28,11 +35,8 @@ export const SignupStudent = () => {
       }}
     >
       <Paper elevation={3} sx={{ padding: "2rem", borderRadius: "20px" }}>
-        <Typography
-          variant="h5"
-          sx={{ color: "black", marginBottom: "1rem", fontWeight: "bold" }}
-        >
-          Sign Up
+        <Typography variant="h3" sx={{ color: "black", marginBottom: "1rem" }}>
+          Student Sign Up
         </Typography>
         <Formik
           onSubmit={(values) => {
@@ -43,11 +47,15 @@ export const SignupStudent = () => {
         >
           <Form>
             <Stack spacing={2}>
-              <InputLabel>Email</InputLabel>
               <TextFieldWrapper
                 name="email"
                 label="Email Address"
                 type="text"
+              />
+              <TextFieldWrapper
+                name="password"
+                label="Enter your Password"
+                type="password"
               />
               <Stack direction="row" spacing={2}>
                 <TextFieldWrapper
@@ -61,7 +69,6 @@ export const SignupStudent = () => {
                   type="text"
                 />
               </Stack>
-              <InputLabel>University Name</InputLabel>
               <TextFieldWrapper
                 name="uniName"
                 label="University Name"
