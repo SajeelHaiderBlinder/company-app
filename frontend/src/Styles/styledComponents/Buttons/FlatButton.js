@@ -58,7 +58,7 @@ export const FlatButton = styled.button`
   background-color: ${(props) => props.backgroundColor || "#bf00c3"};
   border-radius: 20px;
   border: 2px solid ${(props) => props.borderColor || "#bf00c3"}; /* Add border */
-  color: ${(props) => (props.backgroundColor === "white" ? "black" : "white")};
+  color: ${(props) => props.color};
   &:hover {
     background-color: ${(props) => props.backgroundColor || "#630065"};
   }

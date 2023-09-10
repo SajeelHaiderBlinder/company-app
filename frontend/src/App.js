@@ -9,6 +9,9 @@ import { Join } from "./Pages/Join/Join";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { UserDashboard } from "./Pages/Dashboard/UserDashboard";
+import { Dashboard } from "./Components/UserDashboard/Dashboard/Dashboard";
+import { Recruitment } from "./Components/UserDashboard/Recruitment/Recruitment";
+import { Internship } from "./Components/UserDashboard/Internship/Internship";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -65,7 +68,14 @@ function App() {
         <Route path="/join/signupstudent" element={<SignupStudent />} />
         <Route path="/join/signupcommunity" element={<SignupCommunity />} />
         <Route path="/join/signupcompany" element={<SignupCompany />} />
-        <Route path="/userdashboard" element={<UserDashboard />} />
+        <Route path="/userdashboard" element={<UserDashboard />}>
+          <Route path="/userdashboard/dashboard" component={<Dashboard />} />
+          <Route
+            path="/userdashboard/recruitment"
+            component={<Recruitment />}
+          />
+          <Route path="/userdashboard/internship" component={<Internship />} />
+        </Route>
         <Route path="*" element={<>Page not found</>} />
       </Routes>
     </>
