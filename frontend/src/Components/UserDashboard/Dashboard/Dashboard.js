@@ -25,6 +25,7 @@ import { DashboardJobCard } from "../../../Utils/UserDashboard/DashboardJobCard/
 
 import icon_dashboard from "../../../Assets/UserDashboard/icon_dashboard.png";
 import { Avatar, Grid, Paper, Stack } from "@mui/material";
+import { RecruitmentJobCard } from "../../../Utils/Recruitment/RecruitmentJobCard/RecruitmentJobCard";
 
 const DrawerHeader = styled("div")(({ theme }) => ({
   display: "flex",
@@ -127,6 +128,19 @@ export const Dashboard = () => {
             }}
           >
             Jobs
+          </Typography>
+          <Stack direction={"row"} spacing={3}>
+            <RecruitmentJobCard />
+            <RecruitmentJobCard />
+          </Stack>
+          <Typography
+            variant="h6"
+            sx={{
+              textDecoration: "underline",
+              textDecorationColor: "#bf00c3",
+            }}
+          >
+            Internships
           </Typography>
           <Stack direction={"row"} spacing={3}>
             <DashboardJobCard

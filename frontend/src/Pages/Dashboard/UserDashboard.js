@@ -77,6 +77,7 @@ import { Testimonials } from "../../Components/Testimonials/Testimonials";
 import { Dashboard } from "../../Components/UserDashboard/Dashboard/Dashboard";
 import { Recruitment } from "../../Components/UserDashboard/Recruitment/Recruitment";
 import { Internship } from "../../Components/UserDashboard/Internship/Internship";
+import { Networking } from "../../Components/UserDashboard/Networking/Networking";
 
 const drawerWidth = 240;
 
@@ -239,6 +240,13 @@ export const UserDashboard = () => {
               text={"Communities"}
               icon={icon_PeopleCommunity}
             />
+            <NavLink to="/userdashboard/networking">
+              <SidebarSelector
+                open={open}
+                text={"Networking"}
+                icon={icon_Building}
+              />
+            </NavLink>
             <SidebarSelector
               open={open}
               text={"Resources"}
@@ -252,6 +260,7 @@ export const UserDashboard = () => {
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/recruitment" element={<Recruitment />} />
           <Route path="/internship" element={<Internship />} />
+          <Route path="/networking" element={<Networking />} />
           {/* <Route path="/inbox" element={Inbox} />
           <Route path="/internships" element={Internships} />
           <Route path="/communities" element={Communities} />

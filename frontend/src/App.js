@@ -12,6 +12,7 @@ import { UserDashboard } from "./Pages/Dashboard/UserDashboard";
 import { Dashboard } from "./Components/UserDashboard/Dashboard/Dashboard";
 import { Recruitment } from "./Components/UserDashboard/Recruitment/Recruitment";
 import { Internship } from "./Components/UserDashboard/Internship/Internship";
+import { Networking } from "./Components/UserDashboard/Networking/Networking";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -75,6 +76,7 @@ function App() {
             component={<Recruitment />}
           />
           <Route path="/userdashboard/internship" component={<Internship />} />
+          <Route path="/userdashboard/networking" component={<Networking />} />
         </Route>
         <Route path="*" element={<>Page not found</>} />
       </Routes>
