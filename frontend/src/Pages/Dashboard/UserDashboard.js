@@ -1,33 +1,3 @@
-// import { Avatar, Stack, Typography } from "@mui/material";
-
-// export const UserDashboard = () => {
-//   return (
-//     <Stack>
-//       <Stack spacing={6} backgroundColor={"#bf00c3"} direction={"column"}>
-//         <Stack direction={"row"}>
-//           <Avatar />
-//           <Typography variant="h6">Company Name</Typography>
-//         </Stack>
-//         <Stack spacing={2}>
-//           <Typography variant="subtitle1">Dashboard</Typography>
-//           <Typography variant="subtitle1">Inbox</Typography>
-//           <Typography variant="subtitle1">Internship</Typography>
-//           <Typography variant="subtitle1">Recruitment</Typography>
-//           <Typography variant="subtitle1">Commuinities</Typography>
-//           <Typography variant="subtitle1">Resources</Typography>
-//         </Stack>
-//       </Stack>
-//       <Stack sx={{ justifyContent: "space-between" }} direction={"row"}>
-//         <Stack>
-//           <Typography variant="h6">Dashboard</Typography>
-//         </Stack>
-//         <Stack>
-//           <Avatar />
-//         </Stack>
-//       </Stack>
-//     </Stack>
-//   );
-// };
 import {
   BrowserRouter as Router,
   Route,
@@ -59,11 +29,12 @@ import LinearProgress from "@mui/material/LinearProgress";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 
-import content from "../../Utils/StaticContent/Header/testimonials.json";
+import content from "../../StaticContent/Header/testimonials.json";
 import { TestimonialsCard } from "../../Utils/TestimonialsCard/TestimonialsCard";
 import { DashboardJobCard } from "../../Utils/UserDashboard/DashboardJobCard/DashboardJobCard";
 
 import { SidebarSelector } from "../../Utils/UserDashboard/SidebarSelector/SidebarSelector";
+import { useMediaQuery } from "@mui/material";
 
 import icon_Briefcase from "../../Assets/UserDashboard/icon_Briefcase.png";
 import icon_Building from "../../Assets/UserDashboard/icon_Building.png";
@@ -78,6 +49,8 @@ import { Dashboard } from "../../Components/UserDashboard/Dashboard/Dashboard";
 import { Recruitment } from "../../Components/UserDashboard/Recruitment/Recruitment";
 import { Internship } from "../../Components/UserDashboard/Internship/Internship";
 import { Networking } from "../../Components/UserDashboard/Networking/Networking";
+import { Events } from "../../Components/UserDashboard/Events/Events";
+import { Communities } from "../../Components/UserDashboard/Communities/Communities";
 
 const drawerWidth = 240;
 
@@ -149,6 +122,8 @@ const Drawer = styled(MuiDrawer, {
 }));
 
 export const UserDashboard = () => {
+  const isScreenSmall = useMediaQuery((theme) => theme.breakpoints.down("md"));
+
   const theme = useTheme();
   const [open, setOpen] = React.useState(true);
 
@@ -173,6 +148,9 @@ export const UserDashboard = () => {
 
   const handleDrawerOpen = () => {
     setOpen(true);
+    if (isScreenSmall) {
+      setOpen(false);
+    }
   };
 
   const handleDrawerClose = () => {
@@ -247,11 +225,25 @@ export const UserDashboard = () => {
                 icon={icon_Building}
               />
             </NavLink>
+            <NavLink to="/userdashboard/events">
+              <SidebarSelector
+                open={open}
+                text={"Community Events"}
+                icon={icon_Building}
+              />
+            </NavLink>
             <SidebarSelector
               open={open}
               text={"Resources"}
               icon={icon_resources}
             />
+            <NavLink to="/userdashboard/communities">
+              <SidebarSelector
+                open={open}
+                text={"Communities"}
+                icon={icon_Building}
+              />
+            </NavLink>
           </List>
           <Divider color={"white"} />
         </Drawer>
@@ -261,6 +253,8 @@ export const UserDashboard = () => {
           <Route path="/recruitment" element={<Recruitment />} />
           <Route path="/internship" element={<Internship />} />
           <Route path="/networking" element={<Networking />} />
+          <Route path="/events" element={<Events />} />
+          <Route path="/communities" element={<Communities />} />
           {/* <Route path="/inbox" element={Inbox} />
           <Route path="/internships" element={Internships} />
           <Route path="/communities" element={Communities} />

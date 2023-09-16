@@ -13,6 +13,8 @@ import { Dashboard } from "./Components/UserDashboard/Dashboard/Dashboard";
 import { Recruitment } from "./Components/UserDashboard/Recruitment/Recruitment";
 import { Internship } from "./Components/UserDashboard/Internship/Internship";
 import { Networking } from "./Components/UserDashboard/Networking/Networking";
+import { Events } from "./Components/UserDashboard/Events/Events";
+import { Communities } from "./Components/UserDashboard/Communities/Communities";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -77,6 +79,11 @@ function App() {
           />
           <Route path="/userdashboard/internship" component={<Internship />} />
           <Route path="/userdashboard/networking" component={<Networking />} />
+          <Route path="/userdashboard/events" component={<Events />} />
+          <Route
+            path="/userdashboard/communities"
+            component={<Communities />}
+          />
         </Route>
         <Route path="*" element={<>Page not found</>} />
       </Routes>

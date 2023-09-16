@@ -2,7 +2,7 @@ import { Stack, Typography } from "@mui/material";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 
-import content from "../../Utils/StaticContent/Header/testimonials.json";
+import content from "../../StaticContent/Header/testimonials.json";
 import { TestimonialsCard } from "../../Utils/TestimonialsCard/TestimonialsCard";
 
 export const Testimonials = () => {

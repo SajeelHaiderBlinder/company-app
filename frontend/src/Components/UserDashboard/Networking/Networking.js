@@ -28,12 +28,7 @@ const DrawerHeader = styled("div")(({ theme }) => ({
 }));
 
 export const Networking = () => {
-  const [completionPercentage, setCompletionPercentage] = React.useState(50);
-  const createHandleMenuClick = (menuItem) => {
-    return () => {
-      console.log(`Clicked on ${menuItem}`);
-    };
-  };
+  
   return (
     <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
       <DrawerHeader />
