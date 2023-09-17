@@ -26,16 +26,26 @@ import { DashboardJobCard } from "../../../Utils/UserDashboard/DashboardJobCard/
 import { RoundButton } from "../../../Styles/styledComponents/Buttons/RoundButton";
 import icon_dashboard from "../../../Assets/UserDashboard/icon_dashboard.png";
 import { Avatar, Grid, Paper, Stack } from "@mui/material";
+import logoRecruit from "../../../Assets/UserDashboard/cards/RecruitJobCard/logoRecruitJobCard.png";
 export const RecruitmentJobCard = () => {
   return (
-    <Paper elevation={3} sx={{ padding: "4%" }}>
-      <Stack direction={"row"}>
-        <Avatar />
+    <Paper elevation={3} sx={{ padding: "2.5%" }}>
+      <Stack direction={"row"} alignItems={"center"} spacing={3}>
+        <Avatar src={logoRecruit} />
         <Stack>
           <Typography variant="subtitle1">Junior Company</Typography>
-          <Stack direction={"row"} alignItems={"center"}>
+          <Stack direction={"row"} alignItems={"center"} spacing={3}>
             <Typography variant="h5">Software Engineering</Typography>
-            <Typography variant="subtitle1">New</Typography>
+            <Typography
+              variant="subtitle1"
+              fontSize={"12px"}
+              color={"#bf00c3"}
+              backgroundColor="#f9d9fa"
+              padding="5px"
+              borderRadius={"5px"}
+            >
+              New Post
+            </Typography>
           </Stack>
           <Stack direction={"row"} spacing={3}>
             <Typography variant="subtitle1">Location</Typography>
@@ -48,8 +58,6 @@ export const RecruitmentJobCard = () => {
       <Typography variant="subtitle1">
         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Doloribus
         libero, inventore obcaecati distinctio fugit hic voluptatibus quasi
-        delectus dolore impedit expedita nostrum? Recusandae error culpa rem
-        esse iusto quam eligendi!
       </Typography>
     </Paper>
   );

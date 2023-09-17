@@ -1,11 +1,5 @@
-import {
-  BrowserRouter as Router,
-  Route,
-  NavLink,
-  Routes,
-} from "react-router-dom";
-
-import * as React from "react";
+import React, { useEffect, useState } from "react";
+import { Route, NavLink, Routes } from "react-router-dom";
 import { styled, useTheme } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import MuiDrawer from "@mui/material/Drawer";
@@ -19,41 +13,69 @@ import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
-import ListItem from "@mui/material/ListItem";
-import ListItemButton from "@mui/material/ListItemButton";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
-import MailIcon from "@mui/icons-material/Mail";
-import LinearProgress from "@mui/material/LinearProgress";
-import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-
-import content from "../../StaticContent/Header/testimonials.json";
-import { TestimonialsCard } from "../../Utils/TestimonialsCard/TestimonialsCard";
-import { DashboardJobCard } from "../../Utils/UserDashboard/DashboardJobCard/DashboardJobCard";
+import { Avatar, Stack, useMediaQuery } from "@mui/material";
+import InputBase from "@mui/material/InputBase";
+import SearchIcon from "@mui/icons-material/Search";
+import profilePic from "../../Assets/UserDashboard/dashboard/profilePic.png";
+import NotificationsIcon from "@mui/icons-material/Notifications";
 
 import { SidebarSelector } from "../../Utils/UserDashboard/SidebarSelector/SidebarSelector";
-import { useMediaQuery } from "@mui/material";
-
-import icon_Briefcase from "../../Assets/UserDashboard/icon_Briefcase.png";
-import icon_Building from "../../Assets/UserDashboard/icon_Building.png";
-import icon_inbox from "../../Assets/UserDashboard/icon_inbox.png";
-import icon_PeopleCommunity from "../../Assets/UserDashboard/icon_PeopleCommunity.png";
-import icon_resources from "../../Assets/UserDashboard/icon_resources.png";
-import icon_speed from "../../Assets/UserDashboard/icon_speed.png";
-import icon_dashboard from "../../Assets/UserDashboard/icon_dashboard.png";
-import { Avatar, Grid, Paper, Stack } from "@mui/material";
-import { Testimonials } from "../../Components/Testimonials/Testimonials";
 import { Dashboard } from "../../Components/UserDashboard/Dashboard/Dashboard";
 import { Recruitment } from "../../Components/UserDashboard/Recruitment/Recruitment";
 import { Internship } from "../../Components/UserDashboard/Internship/Internship";
 import { Networking } from "../../Components/UserDashboard/Networking/Networking";
 import { Events } from "../../Components/UserDashboard/Events/Events";
 import { Communities } from "../../Components/UserDashboard/Communities/Communities";
-
+import icon_Briefcase from "../../Assets/UserDashboard/icon_Briefcase.png";
+import icon_Building from "../../Assets/UserDashboard/icon_Building.png";
+import icon_inbox from "../../Assets/UserDashboard/icon_inbox.png";
+import icon_PeopleCommunity from "../../Assets/UserDashboard/icon_PeopleCommunity.png";
+import icon_resources from "../../Assets/UserDashboard/icon_resources.png";
+import icon_speed from "../../Assets/UserDashboard/icon_speed.png";
+import { alpha } from "@mui/material/styles";
 const drawerWidth = 240;
+const Search = styled("div")(({ theme }) => ({
+  position: "relative",
+  borderRadius: theme.shape.borderRadius,
+  backgroundColor: alpha(theme.palette.common.white, 0.15),
+  "&:hover": {
+    backgroundColor: alpha(theme.palette.common.white, 0.25),
+  },
+  marginLeft: 0,
+  width: "100%",
+  [theme.breakpoints.up("sm")]: {
+    marginLeft: theme.spacing(1),
+    width: "auto",
+  },
+}));
 
+const SearchIconWrapper = styled("div")(({ theme }) => ({
+  padding: theme.spacing(0, 2),
+  height: "100%",
+  position: "absolute",
+  pointerEvents: "none",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+}));
+
+const StyledInputBase = styled(InputBase)(({ theme }) => ({
+  color: "inherit",
+  "& .MuiInputBase-input": {
+    padding: theme.spacing(1, 1, 1, 0),
+    // vertical padding + font size from searchIcon
+    paddingLeft: `calc(1em + ${theme.spacing(4)})`,
+    transition: theme.transitions.create("width"),
+    width: "100%",
+    [theme.breakpoints.up("sm")]: {
+      width: "12ch",
+      "&:focus": {
+        width: "20ch",
+      },
+    },
+  },
+}));
 const openedMixin = (theme) => ({
   width: drawerWidth,
   transition: theme.transitions.create("width", {
@@ -82,7 +104,6 @@ const DrawerHeader = styled("div")(({ theme }) => ({
   alignItems: "center",
   justifyContent: "flex-end",
   padding: theme.spacing(0, 1),
-  // necessary for content to be below app bar
   ...theme.mixins.toolbar,
 }));
 
@@ -123,10 +144,8 @@ const Drawer = styled(MuiDrawer, {
 
 export const UserDashboard = () => {
   const isScreenSmall = useMediaQuery((theme) => theme.breakpoints.down("md"));
-
   const theme = useTheme();
-  const [open, setOpen] = React.useState(true);
-
+  const [open, setOpen] = useState(!isScreenSmall);
   const responsive = {
     superLargeDesktop: {
       breakpoint: { max: 4000, min: 3000 },
@@ -145,11 +164,18 @@ export const UserDashboard = () => {
       items: 1,
     },
   };
+  useEffect(() => {
+    if (isScreenSmall) {
+      setOpen(false);
+    }
+  }, [isScreenSmall]);
 
   const handleDrawerOpen = () => {
     setOpen(true);
     if (isScreenSmall) {
       setOpen(false);
+    } else {
+      setOpen(true);
     }
   };
 
@@ -175,14 +201,30 @@ export const UserDashboard = () => {
             >
               <MenuIcon />
             </IconButton>
-            <Typography variant="h6" noWrap component="div">
-              Dashboard
-            </Typography>
+
+            <Stack direction={"row"} justifyContent={"space-between"}>
+              <Typography variant="h6" noWrap component="div">
+                Dashboard
+              </Typography>
+              <Stack direction={"row"} alignItems={"center"}>
+                <Search>
+                  <SearchIconWrapper>
+                    <SearchIcon />
+                  </SearchIconWrapper>
+                  <StyledInputBase
+                    placeholder="Search…"
+                    inputProps={{ "aria-label": "search" }}
+                  />
+                </Search>
+                <NotificationsIcon count={3} />
+                <Avatar src={profilePic} />
+              </Stack>
+            </Stack>
           </Toolbar>
         </AppBar>
         <Drawer variant="permanent" open={open}>
           <DrawerHeader>
-            <IconButton onClick={handleDrawerClose}>
+            <IconButton onClick={handleDrawerClose} color="white">
               {theme.direction === "rtl" ? (
                 <ChevronRightIcon />
               ) : (

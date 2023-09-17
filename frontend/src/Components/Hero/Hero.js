@@ -1,7 +1,7 @@
 import { Stack, Typography } from "@mui/material";
 import { NavLink } from "react-router-dom";
-import { RoundButton } from "../../Styles/styledComponents/Buttons/RoundButton";
 
+import { RoundButton } from "../../Styles/styledComponents/Buttons/RoundButton";
 import map from "../../Assets/Header/map.png";
 
 export const Hero = () => {
@@ -42,7 +42,7 @@ export const Hero = () => {
           Bridging the gap between Industry and Academics. Join the Hub of
           Pakistan's Brightest Tech Minds in One Thriving Community.
         </Typography>
-        <NavLink to="/signup">
+        <NavLink to="/join">
           <RoundButton>Sign up</RoundButton>
         </NavLink>
       </Stack>

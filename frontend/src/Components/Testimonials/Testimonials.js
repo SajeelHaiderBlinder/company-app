@@ -48,8 +48,8 @@ export const Testimonials = () => {
             dicta. Omnis voluptatum laborum dignissimos, error laboriosam possimus
             non, necessitatibus voluptates veritatis ex id, vel veniam consectetur
             sunt nostrum tempora officia."
-              ceoName="Usman Asif"
-              companyName="CEO Devsinc"
+              ceoName="Sajeel"
+              companyName="Company"
             />
           </Stack>
           <Stack marginRight={"2rem"}>
@@ -59,8 +59,8 @@ export const Testimonials = () => {
             dicta. Omnis voluptatum laborum dignissimos, error laboriosam possimus
             non, necessitatibus voluptates veritatis ex id, vel veniam consectetur
             sunt nostrum tempora officia."
-              ceoName="Usman Asif"
-              companyName="CEO Devsinc"
+              ceoName="Sajeel"
+              companyName="Company"
             />
           </Stack>
           <Stack marginRight={"2rem"}>
@@ -70,8 +70,8 @@ export const Testimonials = () => {
             dicta. Omnis voluptatum laborum dignissimos, error laboriosam possimus
             non, necessitatibus voluptates veritatis ex id, vel veniam consectetur
             sunt nostrum tempora officia."
-              ceoName="Usman Asif"
-              companyName="CEO Devsinc"
+              ceoName="Sajeel"
+              companyName="Company"
             />
           </Stack>
           <Stack marginRight={"2rem"}>
@@ -81,8 +81,8 @@ export const Testimonials = () => {
             dicta. Omnis voluptatum laborum dignissimos, error laboriosam possimus
             non, necessitatibus voluptates veritatis ex id, vel veniam consectetur
             sunt nostrum tempora officia."
-              ceoName="Usman Asif"
-              companyName="CEO Devsinc"
+              ceoName="Sajeel"
+              companyName="Company"
             />
           </Stack>
         </Carousel>

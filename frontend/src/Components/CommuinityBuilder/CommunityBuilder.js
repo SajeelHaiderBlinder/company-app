@@ -20,7 +20,7 @@ export const CommunityBuilder = () => {
             fontSize: { xs: "2.5rem", md: "3rem" },
           }}
         >
-          NexaPro@ for Community Building
+          Confinity&#174; for Community Building
           <Typography
             variant="h2"
             sx={{
@@ -44,8 +44,8 @@ export const CommunityBuilder = () => {
           and outreach support. Join us today and shape the future of community
           building.
         </Typography>
-        <NavLink to="/signup">
-          <RoundButton>Sign up as a Community Builder</RoundButton>
+        <NavLink to="/join/signupcommunity">
+          <RoundButton>Join as a Community Builder</RoundButton>
         </NavLink>
       </Stack>
       <Stack>

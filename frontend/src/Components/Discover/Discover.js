@@ -50,7 +50,7 @@ export const Discover = () => {
           typeface without relying on meaningful content. Lorem ipsum may be
           used as a placeholder before final copy is available.
         </Typography>
-        <NavLink to="/signup">
+        <NavLink to="/join/signupstudent">
           <RoundButton>Join as a Student</RoundButton>
         </NavLink>
       </Stack>

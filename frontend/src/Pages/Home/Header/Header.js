@@ -23,7 +23,7 @@ export const Header = ({ user, setUser }) => {
       <Stack sx={{ padding: "5%" }}>
         <CommunityBuilder />
       </Stack>
-      <Sponsors />
+      {/* <Sponsors /> */}
       <Stack sx={{ padding: "5%" }}>
         <CompanyBuilder />
       </Stack>

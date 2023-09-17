@@ -16,6 +16,7 @@ import { FlatButton } from "../../Styles/styledComponents/Buttons/FlatButton";
 import { LoginSchema } from "../../Schemas/index";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import LoginCover from "../../Assets/Login/LoginCover.png";
+import { useNavigate } from "react-router";
 
 const initialValues = {
   email: "",
@@ -23,6 +24,7 @@ const initialValues = {
 };
 
 export const Login = () => {
+  const navigate = useNavigate();
   const isLargeScreen = useMediaQuery((theme) => theme.breakpoints.up("md"));
   const handleGoogleAuth = () => {
     window.open(`http://localhost:8080/auth/google/callback`, "_self");
@@ -33,18 +35,25 @@ export const Login = () => {
       justifyContent={"space-evenly"}
       sx={{
         background: "white",
-        width: "100%",
         height: "100vh",
+        padding: "5%",
       }}
     >
-      <ArrowBackIosNewIcon color="#202125" />
-      <Typography variant="h6" color="#202125">
-        Back
-      </Typography>
-
-      <Stack spacing={3} sx={{ padding: "5%", width: "100%" }}>
+      <Stack>
+        <ArrowBackIosNewIcon
+          color="#202125"
+          sx={{ cursor: "pointer" }}
+          onClick={() => {
+            navigate("/");
+          }}
+        />
+      </Stack>
+      <Stack
+        spacing={3}
+        sx={{ marginRight: "2%", width: "100%", maxWidth: "400px" }}
+      >
         <Typography variant="h5" color="#202125">
-          Welcome Back !
+          Welcome Back &#128075;
         </Typography>
         <Typography color="#202125">
           Today is a new day. It's your day. You shape it. Sign in to start
@@ -67,7 +76,15 @@ export const Login = () => {
                   label="Password"
                   type="password"
                 />
-                <FlatButton type="submit" className="login-button">
+                <FlatButton
+                  type="submit"
+                  className="login-button"
+                  color="white"
+                  style={{
+                    maxWidth: "400px",
+                    padding: "10px 20px",
+                  }}
+                >
                   Log In
                 </FlatButton>
                 <div className="divider">Or</div>
@@ -77,6 +94,10 @@ export const Login = () => {
         </Formik>
         <FlatButton
           className="google-button"
+          style={{
+            maxWidth: "400px",
+            padding: "10px 20px",
+          }}
           backgroundColor="white"
           borderColor="#690073"
           onClick={handleGoogleAuth}
@@ -86,16 +107,23 @@ export const Login = () => {
         </FlatButton>
         <FlatButton
           className="linkedin-button"
+          style={{
+            maxWidth: "400px",
+            padding: "10px 20px",
+          }}
           backgroundColor="white"
           borderColor="#690073"
         >
           <img src={LinkedInLogo} alt="LinkedIn Logo" />
           Log in with LinkedIn
         </FlatButton>
-        <Typography variant="caption">C 2023 ALL RIGHTS RESERVED</Typography>
+
+        <Stack alignItems={"center"}>
+          <Typography variant="caption">C 2023 ALL RIGHTS RESERVED</Typography>
+        </Stack>
       </Stack>
       {isLargeScreen && (
-        <Stack sx={{ background: "#bf00c3" }}>
+        <Stack>
           <img src={LoginCover} alt="" />
         </Stack>
       )}

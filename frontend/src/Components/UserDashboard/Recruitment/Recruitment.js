@@ -25,8 +25,11 @@ import "react-multi-carousel/lib/styles.css";
 import { DashboardJobCard } from "../../../Utils/UserDashboard/DashboardJobCard/DashboardJobCard";
 import { RoundButton } from "../../../Styles/styledComponents/Buttons/RoundButton";
 import icon_dashboard from "../../../Assets/UserDashboard/icon_dashboard.png";
+import filter from "../../../Assets/UserDashboard/cards/RecruitJobCard/filter.png";
 import { Avatar, Grid, Paper, Stack } from "@mui/material";
 import { RecruitmentJobCard } from "../../../Utils/Recruitment/RecruitmentJobCard/RecruitmentJobCard";
+import FilterListIcon from "@mui/icons-material/FilterList";
+
 const DrawerHeader = styled("div")(({ theme }) => ({
   display: "flex",
   alignItems: "center",
@@ -53,7 +56,10 @@ export const Recruitment = () => {
             borderColor="#f1f2f4"
             color="black"
           >
-            Filter
+            <Stack direction={"row"} spacing={1}>
+              <img src={filter} alt="" />
+              <Typography> Filter</Typography>
+            </Stack>
           </FlatButton>
         </Stack>
         <Stack>

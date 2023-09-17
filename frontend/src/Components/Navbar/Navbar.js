@@ -9,7 +9,7 @@ import {
 import { Menu as MenuIcon } from "@mui/icons-material";
 import { NavLink } from "react-router-dom";
 
-import logo from "../../Assets/Header/logo.png";
+import logoBlack from "../../Assets/Utils/LogoBlack.png";
 import { RoundButton } from "../../Styles/styledComponents/Buttons/RoundButton";
 import { useState } from "react";
 import "./Navbar.scss";
@@ -35,29 +35,30 @@ export const Navbar = ({ user, setUser }) => {
       justifyContent={{ xs: "space-between" }}
       paddingX={2}
     >
-      <Stack direction="row" alignItems="center" sx={{ color: "black" }}>
-        <Avatar
-          src={logo}
-          alt="logo"
-          sx={{ width: 30, height: 30, marginRight: 1 }}
-        />
-        <Typography variant="body1" sx={{ color: "black" }}>
-          company-name
-        </Typography>
+      <Stack direction="row" sx={{ color: "black" }}>
+        <Stack direction="row" alignItems="center" sx={{ color: "black" }}>
+          <img
+            src={logoBlack}
+            alt=""
+            style={{ width: "50px", height: "30px", marginRight: "10px" }}
+          />
+          <Typography variant="body1" sx={{ color: "black" }}>
+            Confinity
+          </Typography>
+        </Stack>
+        <IconButton
+          edge="end"
+          color="inherit"
+          aria-label="menu"
+          onClick={handleMenuOpen}
+          sx={{
+            display: { xs: "block", md: "none" },
+            color: "black",
+          }}
+        >
+          <MenuIcon sx={{ color: "black" }} />
+        </IconButton>
       </Stack>
-
-      <IconButton
-        edge="end"
-        color="inherit"
-        aria-label="menu"
-        onClick={handleMenuOpen}
-        sx={{
-          display: { xs: "block", md: "none" },
-          color: "black",
-        }}
-      >
-        <MenuIcon sx={{ color: "black" }} />
-      </IconButton>
 
       <Stack
         direction="row"
@@ -136,7 +137,7 @@ export const Navbar = ({ user, setUser }) => {
           </NavLink>
         </MenuItem>
         <MenuItem onClick={handleMenuClose}>
-          <NavLink to="/signup" className="menu-item-link">
+          <NavLink to="/join" className="menu-item-link">
             Sign up
           </NavLink>
         </MenuItem>

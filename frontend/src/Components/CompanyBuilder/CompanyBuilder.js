@@ -25,10 +25,11 @@ export const CompanyBuilder = () => {
               color: "#bf00c3",
               fontWeight: "bold",
               fontSize: { xs: "2.5rem", md: "3rem" },
+              marginRight: "2%",
             }}
           >
-            NexaPro@
-          </span>{" "}
+            Confinity&#174;
+          </span>
           for Software Houses - Elevate your Talent Acquisition.
         </Typography>
         <Typography
@@ -43,7 +44,7 @@ export const CompanyBuilder = () => {
           recruit top students, enhance your brand, and fuel innovation. Join us
           in shaping the future of tech.
         </Typography>
-        <NavLink to="/signup">
+        <NavLink to="/join/signupcompany">
           <RoundButton>Join as a Company</RoundButton>
         </NavLink>
       </Stack>

@@ -59,6 +59,7 @@ export const RoundButton = styled.button`
   border-radius: 20px;
   border: none;
   color: white;
+  max-width: ${(props) => props.maxWidth};
   &:hover {
     background-color: #630065;
   }

@@ -26,7 +26,10 @@ import { DashboardJobCard } from "../../../Utils/UserDashboard/DashboardJobCard/
 import icon_dashboard from "../../../Assets/UserDashboard/icon_dashboard.png";
 import { Avatar, Grid, Paper, Stack } from "@mui/material";
 import { RecruitmentJobCard } from "../../../Utils/Recruitment/RecruitmentJobCard/RecruitmentJobCard";
-
+import icon_github from "../../../Assets/UserDashboard/dashboard/icon_github.png";
+import icon_google from "../../../Assets/UserDashboard/dashboard/icon_google.png";
+import icon_aws from "../../../Assets/UserDashboard/dashboard/icon_aws.png";
+import profilePic from "../../../Assets/UserDashboard/dashboard/profilePic.png";
 const DrawerHeader = styled("div")(({ theme }) => ({
   display: "flex",
   alignItems: "center",
@@ -73,10 +76,10 @@ export const Dashboard = () => {
               sx={{ borderColor: "#bf00c3", margin: "3% 5%", padding: "3%" }}
             >
               <Stack direction={"row"} justifyContent={"space-between"}>
-                <Stack direction={"row"}>
-                  <Avatar />
+                <Stack direction={"row"} alignItems={"center"} spacing={2}>
+                  <Avatar src={profilePic} sx={{ width: 100, height: 100 }} />
                   <Stack>
-                    <Typography variant="h6">Name</Typography>
+                    <Typography variant="h6">Scar</Typography>
                     <Typography variant="subtitle1">
                       Lahore, Pakistan
                     </Typography>
@@ -86,7 +89,7 @@ export const Dashboard = () => {
                     />
                   </Stack>
                 </Stack>
-                <Stack>
+                <Stack color="#666666">
                   <Stack direction={"row"} spacing={4}>
                     <Typography variant="subtitle1">
                       Applications viewed by companies
@@ -108,11 +111,13 @@ export const Dashboard = () => {
                 </Stack>
               </Stack>
               <Stack spacing={2}>
-                <Typography variant="h6">Communities</Typography>
-                <Stack direction={"row"} spacing={2}>
-                  <Avatar />
-                  <Avatar />
-                  <Avatar />
+                <Typography variant="h6" fontWeight={"bold"}>
+                  Communities
+                </Typography>
+                <Stack direction={"row"} spacing={1}>
+                  <Avatar src={icon_github} />
+                  <Avatar src={icon_google} />
+                  <Avatar src={icon_aws} />
                 </Stack>
               </Stack>
             </Paper>
