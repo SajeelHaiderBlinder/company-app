@@ -35,6 +35,9 @@ import icon_resources from "../../Assets/UserDashboard/icon_resources.png";
 import icon_speed from "../../Assets/UserDashboard/icon_speed.png";
 import { alpha } from "@mui/material/styles";
 import { CommunitiesDetail } from "../../Components/UserDashboard/Communities/CommunitiesDetail/CommunitiesDetail";
+import { ComDashboard } from "../../Components/CompanyDashboard/ComDashboard/ComDashboard";
+import { ComJoborInternship } from "../../Components/CompanyDashboard/ComJoborInternship/ComJoborInternship";
+import { CreateJoborInternship } from "../../Components/CompanyDashboard/ComJoborInternship/CreateJoborInternship/CreateJoborInternship";
 const drawerWidth = 240;
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -84,7 +87,7 @@ const openedMixin = (theme) => ({
     duration: theme.transitions.duration.enteringScreen,
   }),
   overflowX: "hidden",
-  background: "#bf00c3",
+  background: "#393939",
 });
 
 const closedMixin = (theme) => ({
@@ -93,7 +96,7 @@ const closedMixin = (theme) => ({
     duration: theme.transitions.duration.leavingScreen,
   }),
   overflowX: "hidden",
-  background: "#bf00c3",
+  background: "#393939",
   width: `calc(${theme.spacing(7)} + 1px)`,
   [theme.breakpoints.up("sm")]: {
     width: `calc(${theme.spacing(8)} + 1px)`,
@@ -143,7 +146,7 @@ const Drawer = styled(MuiDrawer, {
   }),
 }));
 
-export const UserDashboard = () => {
+export const CompanyDashboard = () => {
   const isScreenSmall = useMediaQuery((theme) => theme.breakpoints.down("md"));
   const theme = useTheme();
   const [open, setOpen] = useState(!isScreenSmall);
@@ -240,7 +243,7 @@ export const UserDashboard = () => {
             </IconButton>
           </DrawerHeader>
           <List>
-            <NavLink to="/userdashboard/dashboard">
+            <NavLink to="/companydashboard/dashboard">
               <SidebarSelector
                 open={open}
                 text={"Dashboard"}
@@ -248,14 +251,14 @@ export const UserDashboard = () => {
               />
             </NavLink>
             <SidebarSelector open={open} text={"Inbox"} icon={icon_inbox} />
-            <NavLink to="/userdashboard/internship">
+            <NavLink to="/companydashboard/joborinternship">
               <SidebarSelector
                 open={open}
                 text={"Internships"}
                 icon={icon_Briefcase}
               />
             </NavLink>
-            <NavLink to="/userdashboard/recruitment">
+            <NavLink to="/companydashboard/dashboard">
               <SidebarSelector
                 open={open}
                 text={"Recruitments"}
@@ -267,14 +270,14 @@ export const UserDashboard = () => {
               text={"Communities"}
               icon={icon_PeopleCommunity}
             />
-            <NavLink to="/userdashboard/networking">
+            <NavLink to="/companydashboard/dashboard">
               <SidebarSelector
                 open={open}
                 text={"Networking"}
                 icon={icon_Building}
               />
             </NavLink>
-            <NavLink to="/userdashboard/events">
+            <NavLink to="/companydashboard/dashboard">
               <SidebarSelector
                 open={open}
                 text={"Community Events"}
@@ -286,7 +289,7 @@ export const UserDashboard = () => {
               text={"Resources"}
               icon={icon_resources}
             />
-            <NavLink to="/userdashboard/communities">
+            <NavLink to="/companydashboard/dashboard">
               <SidebarSelector
                 open={open}
                 text={"Communities"}
@@ -298,19 +301,13 @@ export const UserDashboard = () => {
         </Drawer>
 
         <Routes>
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/recruitment" element={<Recruitment />} />
-          <Route path="/internship" element={<Internship />} />
-          <Route path="/networking" element={<Networking />} />
-          <Route path="/events" element={<Events />} />
-          <Route path="/communities" element={<Communities />}>
-            <Route path=":id" element={<CommunitiesDetail />} />
+          <Route path="/dashboard" element={<ComDashboard />} />
+          <Route path="/joborinternship" element={<ComJoborInternship />}>
+            <Route
+              path="createJoborIntern"
+              element={<CreateJoborInternship />}
+            />
           </Route>
-
-          {/* <Route path="/inbox" element={Inbox} />
-          <Route path="/internships" element={Internships} />
-          <Route path="/communities" element={Communities} />
-          <Route path="/resources" element={Resources} /> */}
         </Routes>
       </Box>
     </>

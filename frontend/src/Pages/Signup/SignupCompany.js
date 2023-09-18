@@ -3,7 +3,7 @@ import { Formik, Form } from "formik";
 import { SignupSchema } from "../../Schemas/index";
 import { FlatButton } from "../../Styles/styledComponents/Buttons/FlatButton";
 import { TextFieldWrapper } from "../../Utils/Shared Components/TextFieldWrapper";
-
+import { useNavigate } from "react-router";
 import { InputLabel } from "@mui/material";
 import Multiselect from "multiselect-react-dropdown";
 import { useState } from "react";
@@ -15,7 +15,7 @@ const initialValues = {
 
 export const SignupCompany = () => {
   const [communityOptions, setCommunityOptions] = useState(["GDCS", "MLSA"]);
-
+  const navigate = useNavigate();
   return (
     <Stack
       direction="column"
@@ -95,6 +95,7 @@ export const SignupCompany = () => {
                 variant="contained"
                 color="primary"
                 fullWidth
+                onClick={() => navigate("/companydashboard/dashboard")}
               >
                 Sign Up
               </FlatButton>

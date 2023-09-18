@@ -1,6 +1,5 @@
 import React from "react";
 import Paper from "@mui/material/Paper";
-import Avatar from "@mui/material/Avatar";
 import { styled } from "@mui/material/styles";
 
 const StyledPaper = styled(Paper)(({ theme }) => ({
@@ -13,10 +12,14 @@ const StyledPaper = styled(Paper)(({ theme }) => ({
   boxShadow: theme.shadows[10],
 }));
 
-export const CommunitiesCard = () => {
+export const CommunitiesCard = ({ img }) => {
   return (
     <StyledPaper>
-      <Avatar src="/path_to_avatar_image.jpg" alt="Avatar" />
+      <img
+        src={img}
+        alt="Community Logo"
+        style={{ width: "100px", height: "100px" }}
+      />
     </StyledPaper>
   );
 };

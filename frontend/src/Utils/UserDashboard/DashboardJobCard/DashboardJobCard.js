@@ -1,7 +1,14 @@
 import React from "react";
-import { Paper, Stack, Typography, Avatar } from "@mui/material";
+import { Paper, Stack, Typography, Avatar, IconButton } from "@mui/material";
+import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder"; // Import the save icon
 
-export const DashboardJobCard = ({ heading, tag, ceoName, companyName }) => {
+export const DashboardJobCard = ({
+  heading,
+  tag,
+  ceoName,
+  companyName,
+  img,
+}) => {
   return (
     <Paper elevation={3} sx={{ padding: "1.5rem" }}>
       <Stack>
@@ -15,13 +22,16 @@ export const DashboardJobCard = ({ heading, tag, ceoName, companyName }) => {
         </Stack>
       </Stack>
       <Stack direction="row" spacing={2} alignItems="center">
-        <Avatar />
+        <Avatar src={img} />
         <Stack>
           <Typography variant="subtitle1" sx={{ fontWeight: "bold" }}>
             {ceoName}
           </Typography>
           <Typography variant="subtitle1">{companyName}</Typography>
         </Stack>
+        <IconButton aria-label="Save" color="black" sx={{ marginLeft: "auto" }}>
+          <BookmarkBorderIcon />
+        </IconButton>
       </Stack>
     </Paper>
   );

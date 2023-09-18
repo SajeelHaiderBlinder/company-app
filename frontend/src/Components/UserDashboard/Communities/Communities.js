@@ -20,8 +20,16 @@ import { RoundButton } from "../../../Styles/styledComponents/Buttons/RoundButto
 import { NetworkingCard } from "../../../Utils/Networking/NetworkingCard";
 import content from "../../../StaticContent/UserDashboard/communities.json";
 import { CommunitiesCard } from "../../../Utils/CommunitiesCard/CommunitiesCard";
+import { useNavigate } from "react-router";
+import { NavLink } from "react-router-dom";
+
+import github from "../../../Assets/UserDashboard/communities/community_github.png";
+import gdsc from "../../../Assets/UserDashboard/communities/community_gdsc.png";
+import mlsa from "../../../Assets/UserDashboard/communities/community_mlsa.png";
 
 export const Communities = () => {
+  const navigate = useNavigate();
+
   const DrawerHeader = styled("div")(({ theme }) => ({
     display: "flex",
     alignItems: "center",
@@ -46,16 +54,15 @@ export const Communities = () => {
         <Stack>
           <Grid container spacing={8} padding={2}>
             <Grid item xs={12} sm={6} md={4}>
-              <CommunitiesCard />
+              <NavLink to="/userdashboard/communities/1">
+                <CommunitiesCard img={gdsc} />
+              </NavLink>
             </Grid>
             <Grid item xs={12} sm={6} md={4}>
-              <CommunitiesCard />
+              <CommunitiesCard img={mlsa} />
             </Grid>
             <Grid item xs={12} sm={6} md={4}>
-              <CommunitiesCard />
-            </Grid>
-            <Grid item xs={12} sm={6} md={4}>
-              <CommunitiesCard />
+              <CommunitiesCard img={github} />
             </Grid>
           </Grid>
         </Stack>

@@ -30,6 +30,8 @@ import icon_github from "../../../Assets/UserDashboard/dashboard/icon_github.png
 import icon_google from "../../../Assets/UserDashboard/dashboard/icon_google.png";
 import icon_aws from "../../../Assets/UserDashboard/dashboard/icon_aws.png";
 import profilePic from "../../../Assets/UserDashboard/dashboard/profilePic.png";
+import googleIcon from "../../../Assets/UserDashboard/dashboard/icon_google_light.png";
+
 const DrawerHeader = styled("div")(({ theme }) => ({
   display: "flex",
   alignItems: "center",
@@ -125,48 +127,71 @@ export const Dashboard = () => {
         </Stack>
 
         <Stack spacing={2}>
-          <Typography
-            variant="h6"
-            sx={{
-              textDecoration: "underline",
-              textDecorationColor: "#bf00c3",
-            }}
-          >
-            Jobs
-          </Typography>
-          <Stack direction={"row"} spacing={3}>
-            <RecruitmentJobCard />
-            <RecruitmentJobCard />
-          </Stack>
-          <Typography
-            variant="h6"
-            sx={{
-              textDecoration: "underline",
-              textDecorationColor: "#bf00c3",
-            }}
-          >
-            Internships
-          </Typography>
-          <Stack direction={"row"} spacing={3}>
-            <DashboardJobCard
-              heading="Best product ever"
-              tag="Job"
-              ceoName="Usman Asif"
-              companyName="CEO Devsinc"
-            />
-            <DashboardJobCard
-              heading="Best product ever"
-              tag="Job"
-              ceoName="Usman Asif"
-              companyName="CEO Devsinc"
-            />
-            <DashboardJobCard
-              heading="Best product ever"
-              tag="Job"
-              ceoName="Usman Asif"
-              companyName="CEO Devsinc"
-            />
-          </Stack>
+          <Grid container spacing={2}>
+            <Grid item xs={12}>
+              <Typography
+                variant="h6"
+                sx={{
+                  textDecoration: "underline",
+                  textDecorationColor: "#bf00c3",
+                }}
+              >
+                Jobs
+              </Typography>
+            </Grid>
+            <Grid item xs={12}>
+              <Grid container spacing={3}>
+                <Grid item xs={12} sm={6}>
+                  <RecruitmentJobCard />
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <RecruitmentJobCard />
+                </Grid>
+              </Grid>
+            </Grid>
+            <Grid item xs={12}>
+              <Typography
+                variant="h6"
+                sx={{
+                  textDecoration: "underline",
+                  textDecorationColor: "#bf00c3",
+                }}
+              >
+                Internships
+              </Typography>
+            </Grid>
+            <Grid item xs={12}>
+              <Grid container spacing={3}>
+                <Grid item xs={12} sm={6}>
+                  <DashboardJobCard
+                    heading="Best product ever"
+                    tag="Job"
+                    ceoName="Hanan"
+                    companyName="CEO Google"
+                    img={googleIcon}
+                  />
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <DashboardJobCard
+                    heading="Best product ever"
+                    tag="Job"
+                    ceoName="Hanan"
+                    companyName="CEO Google"
+                    img={googleIcon}
+                  />
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <DashboardJobCard
+                    heading="Best product ever"
+                    tag="Job"
+                    ceoName="Hanan"
+                    companyName="CEO Google"
+                    img={googleIcon}
+                  />
+                </Grid>
+              </Grid>
+            </Grid>
+          </Grid>
         </Stack>
       </Stack>
     </Box>

@@ -15,6 +15,11 @@ import { Internship } from "./Components/UserDashboard/Internship/Internship";
 import { Networking } from "./Components/UserDashboard/Networking/Networking";
 import { Events } from "./Components/UserDashboard/Events/Events";
 import { Communities } from "./Components/UserDashboard/Communities/Communities";
+import { CommunitiesDetail } from "./Components/UserDashboard/Communities/CommunitiesDetail/CommunitiesDetail";
+import { CompanyDashboard } from "./Pages/Dashboard/CompanyDashboard";
+import { ComDashboard } from "./Components/CompanyDashboard/ComDashboard/ComDashboard";
+import { ComJoborInternship } from "./Components/CompanyDashboard/ComJoborInternship/ComJoborInternship";
+import { CreateJoborInternship } from "./Components/CompanyDashboard/ComJoborInternship/CreateJoborInternship/CreateJoborInternship";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -72,18 +77,23 @@ function App() {
         <Route path="/join/signupcommunity" element={<SignupCommunity />} />
         <Route path="/join/signupcompany" element={<SignupCompany />} />
         <Route path="/userdashboard" element={<UserDashboard />}>
-          <Route path="/userdashboard/dashboard" component={<Dashboard />} />
-          <Route
-            path="/userdashboard/recruitment"
-            component={<Recruitment />}
-          />
-          <Route path="/userdashboard/internship" component={<Internship />} />
-          <Route path="/userdashboard/networking" component={<Networking />} />
-          <Route path="/userdashboard/events" component={<Events />} />
-          <Route
-            path="/userdashboard/communities"
-            component={<Communities />}
-          />
+          <Route path="dashboard" component={<Dashboard />} />
+          <Route path="recruitment" component={<Recruitment />} />
+          <Route path="internship" component={<Internship />} />
+          <Route path="networking" component={<Networking />} />
+          <Route path="events" component={<Events />} />
+          <Route path="communities" component={<Communities />}>
+            <Route path=":id" component={<CommunitiesDetail />} />
+          </Route>
+        </Route>
+        <Route path="/companydashboard" element={<CompanyDashboard />}>
+          <Route path="dashboard" element={<ComDashboard />} />
+          <Route path="joborinternship" element={<ComJoborInternship />}>
+            <Route
+              path="createJoborIntern"
+              element={<CreateJoborInternship />}
+            />
+          </Route>
         </Route>
         <Route path="*" element={<>Page not found</>} />
       </Routes>

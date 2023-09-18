@@ -4,7 +4,7 @@ import { JoinCard } from "../../Utils/JoinHelpers/JoinCard/JoinCard";
 import { useCallback, useState } from "react";
 import { JoinButton } from "../../Utils/JoinHelpers/JoinButton/JoinButton";
 import { useNavigate } from "react-router";
-
+import logoBlack from "../../Assets/Utils/LogoBlack.png";
 export const Join = () => {
   const [studentSelector, setStudentSelector] = useState(true);
   const [communitySelector, setCommunitySelector] = useState(false);
@@ -38,12 +38,12 @@ export const Join = () => {
         alignItems={"center"}
         spacing={2}
       >
-        <Avatar />
+        <img src={logoBlack} alt="" style={{ width: "50px", height: "30px" }} />
         <Typography
           variant="subtitle1"
           sx={{ color: "black", fontSize: isSmallScreen ? "1.5rem" : "2rem" }}
         >
-          NexaPro
+          Confinity
         </Typography>
       </Stack>
       <Paper
