@@ -20,6 +20,8 @@ import { CompanyDashboard } from "./Pages/Dashboard/CompanyDashboard";
 import { ComDashboard } from "./Components/CompanyDashboard/ComDashboard/ComDashboard";
 import { ComJoborInternship } from "./Components/CompanyDashboard/ComJoborInternship/ComJoborInternship";
 import { CreateJoborInternship } from "./Components/CompanyDashboard/ComJoborInternship/CreateJoborInternship/CreateJoborInternship";
+import { ComMvpProduct } from "./Components/CompanyDashboard/ComMvpProduct/ComMvpProduct";
+import { ComSponsorPool } from "./Components/CompanyDashboard/ComSponsorPool/ComSponsorPool";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -82,19 +84,25 @@ function App() {
           <Route path="internship" component={<Internship />} />
           <Route path="networking" component={<Networking />} />
           <Route path="events" component={<Events />} />
-          <Route path="communities" component={<Communities />}>
-            <Route path=":id" component={<CommunitiesDetail />} />
-          </Route>
+          <Route path="communities/:id" component={<CommunitiesDetail />} />
+          <Route path="communities" component={<Communities />}></Route>
         </Route>
         <Route path="/companydashboard" element={<CompanyDashboard />}>
-          <Route path="dashboard" element={<ComDashboard />} />
+          <Route path="dashboard" element={<ComDashboard />} />{" "}
+          <Route
+            path="joborinternship/createJoborIntern"
+            element={<CreateJoborInternship />}
+          />
           <Route path="joborinternship" element={<ComJoborInternship />}>
             <Route
               path="createJoborIntern"
               element={<CreateJoborInternship />}
             />
           </Route>
+          <Route path="product" element={<ComMvpProduct />}></Route>
+          <Route path="sponsorpool" element={<ComSponsorPool />}></Route>
         </Route>
+
         <Route path="*" element={<>Page not found</>} />
       </Routes>
     </>

@@ -100,8 +100,9 @@ export const SignupStudent = () => {
               <FlatButton
                 type="submit"
                 variant="contained"
-                color="primary"
+                color="white"
                 fullWidth
+                backgroundColor="#bf00c3"
                 onClick={() => navigate("/userdashboard/dashboard")}
               >
                 Sign Up

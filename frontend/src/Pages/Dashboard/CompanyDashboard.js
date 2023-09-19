@@ -27,17 +27,17 @@ import { Internship } from "../../Components/UserDashboard/Internship/Internship
 import { Networking } from "../../Components/UserDashboard/Networking/Networking";
 import { Events } from "../../Components/UserDashboard/Events/Events";
 import { Communities } from "../../Components/UserDashboard/Communities/Communities";
-import icon_Briefcase from "../../Assets/UserDashboard/icon_Briefcase.png";
 import icon_Building from "../../Assets/UserDashboard/icon_Building.png";
 import icon_inbox from "../../Assets/UserDashboard/icon_inbox.png";
 import icon_PeopleCommunity from "../../Assets/UserDashboard/icon_PeopleCommunity.png";
 import icon_resources from "../../Assets/UserDashboard/icon_resources.png";
-import icon_speed from "../../Assets/UserDashboard/icon_speed.png";
 import { alpha } from "@mui/material/styles";
 import { CommunitiesDetail } from "../../Components/UserDashboard/Communities/CommunitiesDetail/CommunitiesDetail";
 import { ComDashboard } from "../../Components/CompanyDashboard/ComDashboard/ComDashboard";
 import { ComJoborInternship } from "../../Components/CompanyDashboard/ComJoborInternship/ComJoborInternship";
 import { CreateJoborInternship } from "../../Components/CompanyDashboard/ComJoborInternship/CreateJoborInternship/CreateJoborInternship";
+import { ComSponsorPool } from "../../Components/CompanyDashboard/ComSponsorPool/ComSponsorPool";
+import { ComMvpProduct } from "../../Components/CompanyDashboard/ComMvpProduct/ComMvpProduct";
 const drawerWidth = 240;
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -247,7 +247,7 @@ export const CompanyDashboard = () => {
               <SidebarSelector
                 open={open}
                 text={"Dashboard"}
-                icon={icon_speed}
+                icon={icon_Building}
               />
             </NavLink>
             <SidebarSelector open={open} text={"Inbox"} icon={icon_inbox} />
@@ -255,13 +255,13 @@ export const CompanyDashboard = () => {
               <SidebarSelector
                 open={open}
                 text={"Internships"}
-                icon={icon_Briefcase}
+                icon={icon_Building}
               />
             </NavLink>
-            <NavLink to="/companydashboard/dashboard">
+            <NavLink to="/companydashboard/product">
               <SidebarSelector
                 open={open}
-                text={"Recruitments"}
+                text={"Product"}
                 icon={icon_Building}
               />
             </NavLink>
@@ -270,10 +270,10 @@ export const CompanyDashboard = () => {
               text={"Communities"}
               icon={icon_PeopleCommunity}
             />
-            <NavLink to="/companydashboard/dashboard">
+            <NavLink to="/companydashboard/sponsorpool">
               <SidebarSelector
                 open={open}
-                text={"Networking"}
+                text={"Sponsor Pool"}
                 icon={icon_Building}
               />
             </NavLink>
@@ -302,12 +302,16 @@ export const CompanyDashboard = () => {
 
         <Routes>
           <Route path="/dashboard" element={<ComDashboard />} />
-          <Route path="/joborinternship" element={<ComJoborInternship />}>
-            <Route
-              path="createJoborIntern"
-              element={<CreateJoborInternship />}
-            />
-          </Route>
+          <Route
+            path="/joborinternship"
+            element={<ComJoborInternship />}
+          ></Route>
+          <Route
+            path="/joborinternship/createJoborIntern"
+            element={<CreateJoborInternship />}
+          />
+          <Route path="/product" element={<ComMvpProduct />}></Route>
+          <Route path="/sponsorpool" element={<ComSponsorPool />}></Route>
         </Routes>
       </Box>
     </>

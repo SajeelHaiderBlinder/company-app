@@ -80,6 +80,7 @@ export const Login = () => {
                   type="submit"
                   className="login-button"
                   color="white"
+                  backgroundColor="#bf00c3"
                   style={{
                     maxWidth: "400px",
                     padding: "10px 20px",
@@ -98,8 +99,7 @@ export const Login = () => {
             maxWidth: "400px",
             padding: "10px 20px",
           }}
-          backgroundColor="white"
-          borderColor="#690073"
+          backgroundColor="#dadada"
           onClick={handleGoogleAuth}
         >
           <img src={GoogleLogo} alt="Google Logo" />
@@ -111,8 +111,7 @@ export const Login = () => {
             maxWidth: "400px",
             padding: "10px 20px",
           }}
-          backgroundColor="white"
-          borderColor="#690073"
+          backgroundColor="#dadada"
         >
           <img src={LinkedInLogo} alt="LinkedIn Logo" />
           Log in with LinkedIn

@@ -27,7 +27,7 @@ import github from "../../../Assets/UserDashboard/communities/community_github.p
 import gdsc from "../../../Assets/UserDashboard/communities/community_gdsc.png";
 import mlsa from "../../../Assets/UserDashboard/communities/community_mlsa.png";
 
-export const Communities = () => {
+export const ComSponsorPool = () => {
   const navigate = useNavigate();
 
   const DrawerHeader = styled("div")(({ theme }) => ({
@@ -50,21 +50,6 @@ export const Communities = () => {
         </Stack>
         <Stack alignItems={"center"}>
           <Typography variant="h4">Tech Communities in Pakistan</Typography>
-        </Stack>
-        <Stack>
-          <Grid container spacing={8} padding={2}>
-            <Grid item xs={12} sm={6} md={4}>
-              <NavLink to="/userdashboard/communities/1">
-                <CommunitiesCard image={gdsc} />
-              </NavLink>
-            </Grid>
-            <Grid item xs={12} sm={6} md={4}>
-              <CommunitiesCard image={mlsa} />
-            </Grid>
-            <Grid item xs={12} sm={6} md={4}>
-              <CommunitiesCard image={github} />
-            </Grid>
-          </Grid>
         </Stack>
       </Stack>
     </Box>

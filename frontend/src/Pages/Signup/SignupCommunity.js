@@ -93,7 +93,8 @@ export const SignupCommunity = () => {
               <FlatButton
                 type="submit"
                 variant="contained"
-                color="primary"
+                color="white"
+                backgroundColor="#bf00c3"
                 fullWidth
               >
                 Sign Up

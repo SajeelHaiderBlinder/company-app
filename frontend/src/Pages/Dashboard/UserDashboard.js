@@ -27,12 +27,15 @@ import { Internship } from "../../Components/UserDashboard/Internship/Internship
 import { Networking } from "../../Components/UserDashboard/Networking/Networking";
 import { Events } from "../../Components/UserDashboard/Events/Events";
 import { Communities } from "../../Components/UserDashboard/Communities/Communities";
-import icon_Briefcase from "../../Assets/UserDashboard/icon_Briefcase.png";
 import icon_Building from "../../Assets/UserDashboard/icon_Building.png";
 import icon_inbox from "../../Assets/UserDashboard/icon_inbox.png";
 import icon_PeopleCommunity from "../../Assets/UserDashboard/icon_PeopleCommunity.png";
 import icon_resources from "../../Assets/UserDashboard/icon_resources.png";
-import icon_speed from "../../Assets/UserDashboard/icon_speed.png";
+import icon_community from "../../Assets/UserDashboard/icon_community.png";
+import icon_networking from "../../Assets/UserDashboard/icon_networking.png";
+import icon_internship from "../../Assets/UserDashboard/icon_internship.png";
+import icon_dashboard_btn from "../../Assets/UserDashboard/icon_dashboard_btn.png";
+
 import { alpha } from "@mui/material/styles";
 import { CommunitiesDetail } from "../../Components/UserDashboard/Communities/CommunitiesDetail/CommunitiesDetail";
 const drawerWidth = 240;
@@ -244,7 +247,7 @@ export const UserDashboard = () => {
               <SidebarSelector
                 open={open}
                 text={"Dashboard"}
-                icon={icon_speed}
+                icon={icon_dashboard_btn}
               />
             </NavLink>
             <SidebarSelector open={open} text={"Inbox"} icon={icon_inbox} />
@@ -252,7 +255,7 @@ export const UserDashboard = () => {
               <SidebarSelector
                 open={open}
                 text={"Internships"}
-                icon={icon_Briefcase}
+                icon={icon_internship}
               />
             </NavLink>
             <NavLink to="/userdashboard/recruitment">
@@ -302,15 +305,9 @@ export const UserDashboard = () => {
           <Route path="/recruitment" element={<Recruitment />} />
           <Route path="/internship" element={<Internship />} />
           <Route path="/networking" element={<Networking />} />
-          <Route path="/events" element={<Events />} />
-          <Route path="/communities" element={<Communities />}>
-            <Route path=":id" element={<CommunitiesDetail />} />
-          </Route>
-
-          {/* <Route path="/inbox" element={Inbox} />
-          <Route path="/internships" element={Internships} />
-          <Route path="/communities" element={Communities} />
-          <Route path="/resources" element={Resources} /> */}
+          <Route path="/events" element={<Events />} />{" "}
+          <Route path="/communities/:id" element={<CommunitiesDetail />} />
+          <Route path="/communities" element={<Communities />}></Route>
         </Routes>
       </Box>
     </>

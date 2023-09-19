@@ -12,11 +12,11 @@ const StyledPaper = styled(Paper)(({ theme }) => ({
   boxShadow: theme.shadows[10],
 }));
 
-export const CommunitiesCard = ({ img }) => {
+export const CommunitiesCard = ({ image }) => {
   return (
     <StyledPaper>
       <img
-        src={img}
+        src={image}
         alt="Community Logo"
         style={{ width: "100px", height: "100px" }}
       />

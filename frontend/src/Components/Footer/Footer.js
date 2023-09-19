@@ -22,7 +22,7 @@ export const Footer = () => {
         <Grid item xs={12} md={6}>
           <Stack>
             <Typography variant="h4" color="white">
-              NexaPro
+              Confinity
             </Typography>
             <Typography variant="subtitle1" color="white">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -48,7 +48,13 @@ export const Footer = () => {
                   label="Enter your Email"
                   type="text"
                 />
-                <FlatButton type="submit">Submit</FlatButton>
+                <FlatButton
+                  backgroundColor="#dadada"
+                  color="black"
+                  type="submit"
+                >
+                  Submit
+                </FlatButton>
               </Stack>
             </Form>
           </Formik>

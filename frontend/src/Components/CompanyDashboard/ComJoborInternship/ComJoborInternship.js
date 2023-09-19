@@ -45,7 +45,7 @@ export const ComJoborInternship = () => {
   return (
     <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
       <DrawerHeader />
-      <Stack>
+      <Stack spacing={5}>
         <Stack direction={"row"} justifyContent={"space-between"}>
           <Typography variant="h5">Post a Job/Internship</Typography>
           <FlatButton

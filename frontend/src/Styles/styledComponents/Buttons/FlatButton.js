@@ -53,13 +53,14 @@ export const BlockButton = styled(NavLink)`
 `;
 
 export const FlatButton = styled.button`
+  font-weight: bold;
+  border: none;
   cursor: pointer;
   padding: 0.9rem 2rem;
-  background-color: ${(props) => props.backgroundColor || "#bf00c3"};
-  border-radius: 20px;
-  border: 2px solid ${(props) => props.borderColor || "#bf00c3"}; /* Add border */
+  background-color: ${(props) => props.backgroundColor};
+  border-radius: 5px;
   color: ${(props) => props.color};
   &:hover {
-    background-color: ${(props) => props.backgroundColor || "#630065"};
+    background-color: ${(props) => props.hoverColor};
   }
 `;

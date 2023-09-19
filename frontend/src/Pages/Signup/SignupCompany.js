@@ -24,7 +24,7 @@ export const SignupCompany = () => {
       sx={{
         width: "100%",
         height: "100vh",
-        backgroundImage: "linear-gradient(to right, #bf00c3 50%, #ffffff 50%)",
+        backgroundImage: "linear-gradient(to right, #393939 50%, #ffffff 50%)",
       }}
     >
       <Paper elevation={3} sx={{ padding: "2rem", borderRadius: "20px" }}>
@@ -93,7 +93,8 @@ export const SignupCompany = () => {
               <FlatButton
                 type="submit"
                 variant="contained"
-                color="primary"
+                backgroundColor="#bf00c3"
+                color="white"
                 fullWidth
                 onClick={() => navigate("/companydashboard/dashboard")}
               >
