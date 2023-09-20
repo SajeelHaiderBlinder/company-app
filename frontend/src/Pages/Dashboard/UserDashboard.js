@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Route, NavLink, Routes } from "react-router-dom";
-import { styled, useTheme } from "@mui/material/styles";
+import { useTheme } from "@mui/material/styles";
 import Box from "@mui/material/Box";
-import MuiDrawer from "@mui/material/Drawer";
-import MuiAppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import List from "@mui/material/List";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -14,8 +12,14 @@ import MenuIcon from "@mui/icons-material/Menu";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import "react-multi-carousel/lib/styles.css";
-import { Avatar, Stack, useMediaQuery } from "@mui/material";
-import InputBase from "@mui/material/InputBase";
+import {
+  Avatar,
+  Grid,
+  Menu,
+  MenuItem,
+  Stack,
+  useMediaQuery,
+} from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import profilePic from "../../Assets/UserDashboard/dashboard/profilePic.png";
 import NotificationsIcon from "@mui/icons-material/Notifications";
@@ -29,146 +33,51 @@ import { Events } from "../../Components/UserDashboard/Events/Events";
 import { Communities } from "../../Components/UserDashboard/Communities/Communities";
 import icon_Building from "../../Assets/UserDashboard/icon_Building.png";
 import icon_inbox from "../../Assets/UserDashboard/icon_inbox.png";
-import icon_PeopleCommunity from "../../Assets/UserDashboard/icon_PeopleCommunity.png";
 import icon_resources from "../../Assets/UserDashboard/icon_resources.png";
 import icon_community from "../../Assets/UserDashboard/icon_community.png";
 import icon_networking from "../../Assets/UserDashboard/icon_networking.png";
 import icon_internship from "../../Assets/UserDashboard/icon_internship.png";
 import icon_dashboard_btn from "../../Assets/UserDashboard/icon_dashboard_btn.png";
 import icon_events from "../../Assets/UserDashboard/icon_events.png";
+import logo from "../../Assets/Utils/Logo.png";
+import { useLocation } from "react-router-dom";
+import {
+  Search,
+  SearchIconWrapper,
+  StyledInputBase,
+} from "../../Styles/styledComponents/Search/Search";
+import {
+  AppBar,
+  DrawerHeader,
+} from "../../Styles/styledComponents/AppBar/AppBar";
+import { Drawer } from "../../Styles/styledComponents/Drawer/Drawer";
 
-import { alpha } from "@mui/material/styles";
 import { CommunitiesDetail } from "../../Components/UserDashboard/Communities/CommunitiesDetail/CommunitiesDetail";
-const drawerWidth = 240;
-const Search = styled("div")(({ theme }) => ({
-  position: "relative",
-  borderRadius: theme.shape.borderRadius,
-  backgroundColor: alpha(theme.palette.common.white, 0.15),
-  "&:hover": {
-    backgroundColor: alpha(theme.palette.common.white, 0.25),
-  },
-  marginLeft: 0,
-  width: "100%",
-  [theme.breakpoints.up("sm")]: {
-    marginLeft: theme.spacing(1),
-    width: "auto",
-  },
-}));
-
-const SearchIconWrapper = styled("div")(({ theme }) => ({
-  padding: theme.spacing(0, 2),
-  height: "100%",
-  position: "absolute",
-  pointerEvents: "none",
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-}));
-
-const StyledInputBase = styled(InputBase)(({ theme }) => ({
-  color: "inherit",
-  "& .MuiInputBase-input": {
-    padding: theme.spacing(1, 1, 1, 0),
-    // vertical padding + font size from searchIcon
-    paddingLeft: `calc(1em + ${theme.spacing(4)})`,
-    transition: theme.transitions.create("width"),
-    width: "100%",
-    [theme.breakpoints.up("sm")]: {
-      width: "12ch",
-      "&:focus": {
-        width: "20ch",
-      },
-    },
-  },
-}));
-const openedMixin = (theme) => ({
-  width: drawerWidth,
-  transition: theme.transitions.create("width", {
-    easing: theme.transitions.easing.sharp,
-    duration: theme.transitions.duration.enteringScreen,
-  }),
-  overflowX: "hidden",
-  background: "#bf00c3",
-});
-
-const closedMixin = (theme) => ({
-  transition: theme.transitions.create("width", {
-    easing: theme.transitions.easing.sharp,
-    duration: theme.transitions.duration.leavingScreen,
-  }),
-  overflowX: "hidden",
-  background: "#bf00c3",
-  width: `calc(${theme.spacing(7)} + 1px)`,
-  [theme.breakpoints.up("sm")]: {
-    width: `calc(${theme.spacing(8)} + 1px)`,
-  },
-});
-
-const DrawerHeader = styled("div")(({ theme }) => ({
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "flex-end",
-  padding: theme.spacing(0, 1),
-  ...theme.mixins.toolbar,
-}));
-
-const AppBar = styled(MuiAppBar, {
-  shouldForwardProp: (prop) => prop !== "open",
-})(({ theme, open }) => ({
-  zIndex: theme.zIndex.drawer + 1,
-  transition: theme.transitions.create(["width", "margin"], {
-    easing: theme.transitions.easing.sharp,
-    duration: theme.transitions.duration.leavingScreen,
-  }),
-  ...(open && {
-    marginLeft: drawerWidth,
-    width: `calc(100% - ${drawerWidth}px)`,
-    transition: theme.transitions.create(["width", "margin"], {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-  }),
-}));
-
-const Drawer = styled(MuiDrawer, {
-  shouldForwardProp: (prop) => prop !== "open",
-})(({ theme, open }) => ({
-  width: drawerWidth,
-  flexShrink: 0,
-  whiteSpace: "nowrap",
-  boxSizing: "border-box",
-  ...(open && {
-    ...openedMixin(theme),
-    "& .MuiDrawer-paper": openedMixin(theme),
-  }),
-  ...(!open && {
-    ...closedMixin(theme),
-    "& .MuiDrawer-paper": closedMixin(theme),
-  }),
-}));
 
 export const UserDashboard = () => {
+  const location = useLocation();
   const isScreenSmall = useMediaQuery((theme) => theme.breakpoints.down("md"));
   const theme = useTheme();
   const [open, setOpen] = useState(!isScreenSmall);
-  const responsive = {
-    superLargeDesktop: {
-      breakpoint: { max: 4000, min: 3000 },
-      items: 5,
-    },
-    desktop: {
-      breakpoint: { max: 3000, min: 1024 },
-      items: 3,
-    },
-    tablet: {
-      breakpoint: { max: 1024, min: 464 },
-      items: 2,
-    },
-    mobile: {
-      breakpoint: { max: 464, min: 0 },
-      items: 1,
-    },
+
+  const [profileDrop, setProfileDrop] = useState(null);
+  const openProfile = Boolean(profileDrop);
+  const handleClick = (event) => {
+    setProfileDrop(event.currentTarget);
   };
+  const handleClose = () => {
+    setProfileDrop(null);
+  };
+
+  const [notificationDrop, setNotificationDrop] = React.useState(null);
+  const openNotification = Boolean(notificationDrop);
+  const handleClickNotification = (event) => {
+    setNotificationDrop(event.currentTarget);
+  };
+  const handleCloseNotification = () => {
+    setNotificationDrop(null);
+  };
+
   useEffect(() => {
     if (isScreenSmall) {
       setOpen(false);
@@ -183,6 +92,20 @@ export const UserDashboard = () => {
       setOpen(true);
     }
   };
+  const dashboardText =
+    location.pathname === "/userdashboard/dashboard"
+      ? "Dashboard"
+      : location.pathname === "/userdashboard/internship"
+      ? "Internships"
+      : location.pathname === "/userdashboard/recruitment"
+      ? "Recruitments"
+      : location.pathname === "/userdashboard/networking"
+      ? "Networking"
+      : location.pathname === "/userdashboard/events"
+      ? "Events"
+      : location.pathname === "/userdashboard/communities"
+      ? "Communities"
+      : "Resources";
 
   const handleDrawerClose = () => {
     setOpen(false);
@@ -194,56 +117,111 @@ export const UserDashboard = () => {
         <CssBaseline />
         <AppBar position="fixed" open={open}>
           <Toolbar>
-            <IconButton
-              color="inherit"
-              aria-label="open drawer"
-              onClick={handleDrawerOpen}
-              edge="start"
-              sx={{
-                marginRight: 5,
-                ...(open && { display: "none" }),
-              }}
-            >
-              <MenuIcon />
-            </IconButton>
-
-            <Stack
-              direction={"row"}
-              justifyContent={"space-between"}
-              className="ml-6"
-            >
-              <Stack>
+            <Grid container alignItems="center">
+              <Grid item xs={6} display={"flex"} alignItems={"center"}>
+                <IconButton
+                  color="inherit"
+                  aria-label="open drawer"
+                  onClick={handleDrawerOpen}
+                  edge="start"
+                  sx={{
+                    marginRight: 5,
+                    ...(open && { display: "none" }),
+                  }}
+                >
+                  <MenuIcon />
+                </IconButton>
                 <Typography variant="h6" component="div">
-                  {/* Dashboard */}
+                  {dashboardText}
                 </Typography>
-              </Stack>
-              <Stack direction={"row"} alignItems={"center"}>
-                <Search>
-                  <SearchIconWrapper>
-                    <SearchIcon />
-                  </SearchIconWrapper>
-                  <StyledInputBase
-                    placeholder="Search…"
-                    inputProps={{ "aria-label": "search" }}
+              </Grid>
+              <Grid
+                item
+                xs={6}
+                container
+                justifyContent="flex-end"
+                spacing={2}
+                alignItems={"center"}
+              >
+                <Grid item>
+                  <Search>
+                    <SearchIconWrapper>
+                      <SearchIcon />
+                    </SearchIconWrapper>
+                    <StyledInputBase
+                      placeholder="Search…"
+                      inputProps={{ "aria-label": "search" }}
+                    />
+                  </Search>
+                </Grid>
+                <Grid item>
+                  <NotificationsIcon
+                    count={3}
+                    id="basic-button"
+                    aria-controls={openNotification ? "basic-menu" : undefined}
+                    aria-haspopup="true"
+                    aria-expanded={openNotification ? "true" : undefined}
+                    onClick={handleClickNotification}
                   />
-                </Search>
-                <NotificationsIcon count={3} />
-                <Avatar src={profilePic} />
-              </Stack>
-            </Stack>
+                  <Menu
+                    id="basic-menu"
+                    anchorEl={notificationDrop}
+                    open={openNotification}
+                    onClose={handleCloseNotification}
+                    MenuListProps={{
+                      "aria-labelledby": "basic-button",
+                    }}
+                  >
+                    <MenuItem onClick={handleClose}>Info</MenuItem>
+                    <MenuItem onClick={handleClose}>Info</MenuItem>
+                  </Menu>
+                </Grid>
+
+                <Grid item>
+                  <Avatar
+                    src={profilePic}
+                    id="basic-button"
+                    aria-controls={openProfile ? "basic-menu" : undefined}
+                    aria-haspopup="true"
+                    aria-expanded={openProfile ? "true" : undefined}
+                    onClick={handleClick}
+                  />
+                  <Menu
+                    id="basic-menu"
+                    anchorEl={profileDrop}
+                    open={openProfile}
+                    onClose={handleClose}
+                    MenuListProps={{
+                      "aria-labelledby": "basic-button",
+                    }}
+                  >
+                    <MenuItem onClick={handleClose}>Profile</MenuItem>
+                    <MenuItem onClick={handleClose}>Logout</MenuItem>
+                  </Menu>
+                </Grid>
+              </Grid>
+            </Grid>
           </Toolbar>
         </AppBar>
-        <Drawer variant="permanent" open={open}>
+        <Drawer variant="permanent" open={open} background={"#bf00c3"}>
           <DrawerHeader>
-            <IconButton onClick={handleDrawerClose} color="white">
-              {theme.direction === "rtl" ? (
-                <ChevronRightIcon />
-              ) : (
-                <ChevronLeftIcon />
-              )}
-            </IconButton>
+            <Stack direction={"row-reverse"} alignItems={"center"}>
+              <IconButton onClick={handleDrawerClose} sx={{ color: "white" }}>
+                {theme.direction === "rtl" ? (
+                  <ChevronRightIcon />
+                ) : (
+                  <ChevronLeftIcon />
+                )}
+              </IconButton>
+              <Stack direction={"row"} spacing={0.4} alignItems={"center"}>
+                <img src={logo} alt="logo" />
+                <Typography color="white" fontWeight={"bold"} variant="h5">
+                  Confiniti.&#174;
+                </Typography>
+              </Stack>
+            </Stack>
           </DrawerHeader>
-          <List>
+          <List sx={{ marginTop: "2rem" }}>
             <NavLink to="/userdashboard/dashboard">
               <SidebarSelector
                 open={open}
@@ -297,7 +275,7 @@ export const UserDashboard = () => {
           <Route path="/recruitment" element={<Recruitment />} />
           <Route path="/internship" element={<Internship />} />
           <Route path="/networking" element={<Networking />} />
-          <Route path="/events" element={<Events />} />{" "}
+          <Route path="/events" element={<Events />} />
           <Route path="/communities/:id" element={<CommunitiesDetail />} />
           <Route path="/communities" element={<Communities />}></Route>
         </Routes>

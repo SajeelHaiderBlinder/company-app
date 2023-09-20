@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Route, NavLink, Routes } from "react-router-dom";
+import { Route, NavLink, Routes, useLocation } from "react-router-dom";
 import { styled, useTheme } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import MuiDrawer from "@mui/material/Drawer";
@@ -14,7 +14,14 @@ import MenuIcon from "@mui/icons-material/Menu";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import "react-multi-carousel/lib/styles.css";
-import { Avatar, Stack, useMediaQuery } from "@mui/material";
+import {
+  Avatar,
+  Grid,
+  Menu,
+  MenuItem,
+  Stack,
+  useMediaQuery,
+} from "@mui/material";
 import InputBase from "@mui/material/InputBase";
 import SearchIcon from "@mui/icons-material/Search";
 import profilePic from "../../Assets/UserDashboard/dashboard/profilePic.png";
@@ -31,8 +38,19 @@ import icon_merchandise from "../../Assets/ComDashboard/icon_merchandise.png";
 import icon_space from "../../Assets/ComDashboard/icon_space.png";
 import icon_sponsorpool from "../../Assets/ComDashboard/icon_sponsorpool.png";
 import icon_techevents from "../../Assets/ComDashboard/icon_techevents.png";
-
+import logo from "../../Assets/Utils/Logo.png";
 import { alpha } from "@mui/material/styles";
+// import {
+//   Search,
+//   SearchIconWrapper,
+//   StyledInputBase,
+// } from "../../Styles/styledComponents/Search/Search";
+// import {
+//   AppBar,
+//   DrawerHeader,
+// } from "../../Styles/styledComponents/AppBar/AppBar";
+// import { Drawer } from "../../Styles/styledComponents/Drawer/Drawer";
+
 import { ComDashboard } from "../../Components/CompanyDashboard/ComDashboard/ComDashboard";
 import { ComJoborInternship } from "../../Components/CompanyDashboard/ComJoborInternship/ComJoborInternship";
 import { CreateJoborInternship } from "../../Components/CompanyDashboard/ComJoborInternship/CreateJoborInternship/CreateJoborInternship";
@@ -41,10 +59,10 @@ import { ComMvpProduct } from "../../Components/CompanyDashboard/ComMvpProduct/C
 const drawerWidth = 240;
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
-  borderRadius: theme.shape.borderRadius,
-  backgroundColor: alpha(theme.palette.common.white, 0.15),
+  borderRadius: "20px",
+  backgroundColor: "#f1f2f4",
   "&:hover": {
-    backgroundColor: alpha(theme.palette.common.white, 0.25),
+    backgroundColor: "#f1f2f4",
   },
   marginLeft: 0,
   width: "100%",
@@ -68,7 +86,6 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   color: "inherit",
   "& .MuiInputBase-input": {
     padding: theme.spacing(1, 1, 1, 0),
-    // vertical padding + font size from searchIcon
     paddingLeft: `calc(1em + ${theme.spacing(4)})`,
     transition: theme.transitions.create("width"),
     width: "100%",
@@ -127,6 +144,9 @@ const AppBar = styled(MuiAppBar, {
       duration: theme.transitions.duration.enteringScreen,
     }),
   }),
+
+  boxShadow: "none",
+  borderRadius: "30px",
 }));
 
 const Drawer = styled(MuiDrawer, {
@@ -147,27 +167,28 @@ const Drawer = styled(MuiDrawer, {
 }));
 
 export const CompanyDashboard = () => {
+  const location = useLocation();
   const isScreenSmall = useMediaQuery((theme) => theme.breakpoints.down("md"));
   const theme = useTheme();
   const [open, setOpen] = useState(!isScreenSmall);
-  const responsive = {
-    superLargeDesktop: {
-      breakpoint: { max: 4000, min: 3000 },
-      items: 5,
-    },
-    desktop: {
-      breakpoint: { max: 3000, min: 1024 },
-      items: 3,
-    },
-    tablet: {
-      breakpoint: { max: 1024, min: 464 },
-      items: 2,
-    },
-    mobile: {
-      breakpoint: { max: 464, min: 0 },
-      items: 1,
-    },
+  const [profileDrop, setProfileDrop] = React.useState(null);
+  const openProfile = Boolean(profileDrop);
+  const handleClick = (event) => {
+    setProfileDrop(event.currentTarget);
   };
+  const handleClose = () => {
+    setProfileDrop(null);
+  };
+
+  const [notificationDrop, setNotificationDrop] = React.useState(null);
+  const openNotification = Boolean(notificationDrop);
+  const handleClickNotification = (event) => {
+    setNotificationDrop(event.currentTarget);
+  };
+  const handleCloseNotification = () => {
+    setNotificationDrop(null);
+  };
+
   useEffect(() => {
     if (isScreenSmall) {
       setOpen(false);
@@ -183,68 +204,141 @@ export const CompanyDashboard = () => {
     }
   };
 
+  const dashboardText =
+    location.pathname === "/companydashboard/dashboard"
+      ? "Dashboard"
+      : location.pathname === "/companydashboard/responses"
+      ? "Responses"
+      : location.pathname === "/companydashboard/joborinternship"
+      ? "Job/Internship"
+      : location.pathname === "/companydashboard/product"
+      ? "Product"
+      : location.pathname === "/companydashboard/sponsorpool"
+      ? "Sponsor Pool"
+      : location.pathname === "/companydashboard/techevents"
+      ? "Tech Events"
+      : location.pathname === "/companydashboard/merchandise"
+      ? "Merchendise"
+      : location.pathname === "/companydashboard/space"
+      ? "Space"
+      : location.pathname === "/companydashboard/food"
+      ? "Food"
+      : "Dashboard";
+
   const handleDrawerClose = () => {
     setOpen(false);
   };
-
   return (
     <>
       <Box sx={{ display: "flex", color: "black" }}>
         <CssBaseline />
         <AppBar position="fixed" open={open}>
           <Toolbar>
-            <IconButton
-              color="inherit"
-              aria-label="open drawer"
-              onClick={handleDrawerOpen}
-              edge="start"
-              sx={{
-                marginRight: 5,
-                ...(open && { display: "none" }),
-              }}
-            >
-              <MenuIcon />
-            </IconButton>
-
-            <Stack
-              direction={"row"}
-              justifyContent={"space-between"}
-              className="ml-6"
-            >
-              <Stack>
-                <Typography variant="h6" component="div"></Typography>
-              </Stack>
-              <Stack
-                direction={"row"}
+            <Grid container alignItems="center">
+              <Grid item xs={6} display={"flex"} alignItems={"center"}>
+                <IconButton
+                  color="inherit"
+                  aria-label="open drawer"
+                  onClick={handleDrawerOpen}
+                  edge="start"
+                  sx={{
+                    marginRight: 5,
+                    ...(open && { display: "none" }),
+                  }}
+                >
+                  <MenuIcon />
+                </IconButton>
+                <Typography variant="h6" component="div">
+                  {dashboardText}
+                </Typography>
+              </Grid>
+              <Grid
+                item
+                xs={6}
+                container
+                justifyContent="flex-end"
+                spacing={2}
                 alignItems={"center"}
-                justifyContent={"space-between"}
               >
-                <Search>
-                  <SearchIconWrapper>
-                    <SearchIcon />
-                  </SearchIconWrapper>
-                  <StyledInputBase
-                    placeholder="Search…"
-                    inputProps={{ "aria-label": "search" }}
+                <Grid item>
+                  <Search>
+                    <SearchIconWrapper>
+                      <SearchIcon />
+                    </SearchIconWrapper>
+                    <StyledInputBase
+                      placeholder="Search…"
+                      inputProps={{ "aria-label": "search" }}
+                    />
+                  </Search>
+                </Grid>
+                <Grid item>
+                  <NotificationsIcon
+                    count={3}
+                    id="basic-button"
+                    aria-controls={openNotification ? "basic-menu" : undefined}
+                    aria-haspopup="true"
+                    aria-expanded={openNotification ? "true" : undefined}
+                    onClick={handleClickNotification}
                   />
-                </Search>
-                <NotificationsIcon count={3} />
-                <Avatar src={profilePic} />
-              </Stack>
-            </Stack>
+                  <Menu
+                    id="basic-menu"
+                    anchorEl={notificationDrop}
+                    open={openNotification}
+                    onClose={handleCloseNotification}
+                    MenuListProps={{
+                      "aria-labelledby": "basic-button",
+                    }}
+                  >
+                    <MenuItem onClick={handleClose}>Info</MenuItem>
+                    <MenuItem onClick={handleClose}>Info</MenuItem>
+                  </Menu>
+                </Grid>
+
+                <Grid item>
+                  <Avatar
+                    src={profilePic}
+                    id="basic-button"
+                    aria-controls={openProfile ? "basic-menu" : undefined}
+                    aria-haspopup="true"
+                    aria-expanded={openProfile ? "true" : undefined}
+                    onClick={handleClick}
+                  />
+                  <Menu
+                    id="basic-menu"
+                    anchorEl={profileDrop}
+                    open={openProfile}
+                    onClose={handleClose}
+                    MenuListProps={{
+                      "aria-labelledby": "basic-button",
+                    }}
+                  >
+                    <MenuItem onClick={handleClose}>Profile</MenuItem>
+                    <MenuItem onClick={handleClose}>Logout</MenuItem>
+                  </Menu>
+                </Grid>
+              </Grid>
+            </Grid>
           </Toolbar>
         </AppBar>
-        <Drawer variant="permanent" open={open}>
+        <Drawer variant="permanent" open={open} background={"#202125"}>
           <DrawerHeader>
-            <IconButton onClick={handleDrawerClose} color="white">
-              {theme.direction === "rtl" ? (
-                <ChevronRightIcon />
-              ) : (
-                <ChevronLeftIcon />
-              )}
-            </IconButton>
+            <Stack direction={"row-reverse"} alignItems={"center"}>
+              <IconButton onClick={handleDrawerClose} sx={{ color: "white" }}>
+                {theme.direction === "rtl" ? (
+                  <ChevronRightIcon />
+                ) : (
+                  <ChevronLeftIcon />
+                )}
+              </IconButton>
+              <Stack direction={"row"} spacing={0.4} alignItems={"center"}>
+                <img src={logo} alt="logo" />
+                <Typography color="white" fontWeight={"bold"} variant="h5">
+                  Confiniti.&#174;
+                </Typography>
+              </Stack>
+            </Stack>
           </DrawerHeader>
-          <List>
+          <List sx={{ marginTop: "2rem" }}>
             <NavLink to="/companydashboard/dashboard">
               <SidebarSelector
                 open={open}

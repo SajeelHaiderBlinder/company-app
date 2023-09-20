@@ -4,7 +4,7 @@ export const ImpactNumbers = () => {
   return (
     <Stack
       spacing={5}
-      sx={{ padding: "5%", background: "#202125" }}
+      sx={{ padding: "8%", background: "#202125" }}
       alignItems="center"
     >
       <Stack alignItems="center">
