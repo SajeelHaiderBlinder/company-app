@@ -10,27 +10,31 @@ import {
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
 import tester1 from "../../Assets/Header/community.png";
+import mlsa from "../../Assets/UserDashboard/communities/community_mlsa.png";
+import gdsc from "../../Assets/UserDashboard/communities/community_gdsc.png";
+import github from "../../Assets/UserDashboard/communities/community_github.png";
+
 export const CommunityEventCard = () => {
   const data = [
     {
       imageUrl: tester1,
       date: "25 Sept",
-      title: "Event Title 1",
-      avatars: ["avatar_url_1.jpg", "avatar_url_2.jpg", "avatar_url_3.jpg"],
+      title: "Google IO Extended",
+      avatars: [mlsa, gdsc],
       location: "Event Location 1",
     },
     {
       imageUrl: tester1,
       date: "10 Oct",
-      title: "Event Title 2",
-      avatars: ["avatar_url_4.jpg", "avatar_url_5.jpg"],
+      title: "MLSA Gold event",
+      avatars: [github, mlsa],
       location: "Event Location 2",
     },
     {
       imageUrl: tester1,
       date: "10 Oct",
-      title: "Event Title 2",
-      avatars: ["avatar_url_4.jpg", "avatar_url_5.jpg"],
+      title: "Tech Tehwaar",
+      avatars: [gdsc, github],
       location: "Event Location 2",
     },
   ];
@@ -41,7 +45,7 @@ export const CommunityEventCard = () => {
         <Grid key={index} item xs={12} sm={6} md={4} lg={4}>
           <Paper
             elevation={3}
-            sx={{ position: "relative", borderRadius: "20px" }}
+            sx={{ position: "relative", borderRadius: "20px", padding: "5%" }}
           >
             <img
               src={item.imageUrl}
@@ -75,7 +79,9 @@ export const CommunityEventCard = () => {
               </IconButton>
             </Stack>
             <Stack p={2}>
-              <Typography variant="h6">{item.title}</Typography>
+              <Typography variant="h6" fontWeight={"bold"}>
+                {item.title}
+              </Typography>
               <Stack direction="row" spacing={1}>
                 {item.avatars.map((avatar, avatarIndex) => (
                   <Avatar key={avatarIndex} src={avatar} />
@@ -89,7 +95,7 @@ export const CommunityEventCard = () => {
               </Stack>
             </Stack>
             <Stack direction={"row-reverse"}>
-              <Typography variant="subtitle1">View Details </Typography>
+              <Typography variant="subtitle1">View Details &gt;</Typography>
             </Stack>
           </Paper>
         </Grid>

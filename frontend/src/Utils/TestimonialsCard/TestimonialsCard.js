@@ -1,6 +1,12 @@
 import { Avatar, Stack, Typography } from "@mui/material";
 
-export const TestimonialsCard = ({ heading, body, ceoName, companyName }) => {
+export const TestimonialsCard = ({
+  image,
+  heading,
+  body,
+  ceoName,
+  companyName,
+}) => {
   return (
     <Stack
       backgroundColor="white"
@@ -17,7 +23,7 @@ export const TestimonialsCard = ({ heading, body, ceoName, companyName }) => {
         </Typography>
       </Stack>
       <Stack direction={"row"} spacing={2} alignItems={"center"}>
-        <Avatar />
+        <Avatar src={image} alt="testimonial image" />
         <Stack>
           <Typography variant="subtitle1" sx={{ fontWeight: "bold" }}>
             {ceoName}

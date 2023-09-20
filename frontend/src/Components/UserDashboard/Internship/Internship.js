@@ -8,6 +8,7 @@ import { Grid, Stack, Switch } from "@mui/material";
 import { FlatButton } from "../../../Styles/styledComponents/Buttons/FlatButton";
 import { MapContainer, TileLayer } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
+import google from "../../../Assets/UserDashboard/dashboard/icon_google.png";
 const DrawerHeader = styled("div")(({ theme }) => ({
   display: "flex",
   alignItems: "center",
@@ -66,26 +67,29 @@ export const Internship = () => {
           <Grid container spacing={3}>
             <Grid item xs={12} sm={6} md={4} lg={3}>
               <DashboardJobCard
-                heading="Best product ever"
+                img={google}
+                heading="Java Spring Boot Developer"
                 tag="Job"
-                ceoName="Usman Asif"
-                companyName="CEO Devsinc"
+                ceoName="Moiz Amjad"
+                companyName="CEO "
               />
             </Grid>
             <Grid item xs={12} sm={6} md={4} lg={3}>
               <DashboardJobCard
-                heading="Best product ever"
+                img={google}
+                heading="Java Spring Boot Developer"
                 tag="Job"
-                ceoName="Usman Asif"
-                companyName="CEO Devsinc"
+                ceoName="Moiz Amjad"
+                companyName="CEO "
               />
             </Grid>
             <Grid item xs={12} sm={6} md={4} lg={3}>
               <DashboardJobCard
-                heading="Best product ever"
+                img={google}
+                heading="Java Spring Boot Developer"
                 tag="Job"
-                ceoName="Usman Asif"
-                companyName="CEO Devsinc"
+                ceoName="Moiz Amjad"
+                companyName="CEO "
               />
             </Grid>
           </Grid>

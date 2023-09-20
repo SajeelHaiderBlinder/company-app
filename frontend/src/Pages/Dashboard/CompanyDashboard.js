@@ -21,18 +21,18 @@ import profilePic from "../../Assets/UserDashboard/dashboard/profilePic.png";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 
 import { SidebarSelector } from "../../Utils/UserDashboard/SidebarSelector/SidebarSelector";
-import { Dashboard } from "../../Components/UserDashboard/Dashboard/Dashboard";
-import { Recruitment } from "../../Components/UserDashboard/Recruitment/Recruitment";
-import { Internship } from "../../Components/UserDashboard/Internship/Internship";
-import { Networking } from "../../Components/UserDashboard/Networking/Networking";
-import { Events } from "../../Components/UserDashboard/Events/Events";
-import { Communities } from "../../Components/UserDashboard/Communities/Communities";
-import icon_Building from "../../Assets/UserDashboard/icon_Building.png";
-import icon_inbox from "../../Assets/UserDashboard/icon_inbox.png";
-import icon_PeopleCommunity from "../../Assets/UserDashboard/icon_PeopleCommunity.png";
-import icon_resources from "../../Assets/UserDashboard/icon_resources.png";
+
+import icon_product from "../../Assets/ComDashboard/icon_product.png";
+import icon_comdashboard from "../../Assets/ComDashboard/icon_comdashboard.png";
+import icon_comresponse from "../../Assets/ComDashboard/icon_comresponse.png";
+import icon_food from "../../Assets/ComDashboard/icon_food.png";
+import icon_joborintern from "../../Assets/ComDashboard/icon_joborintern.png";
+import icon_merchandise from "../../Assets/ComDashboard/icon_merchandise.png";
+import icon_space from "../../Assets/ComDashboard/icon_space.png";
+import icon_sponsorpool from "../../Assets/ComDashboard/icon_sponsorpool.png";
+import icon_techevents from "../../Assets/ComDashboard/icon_techevents.png";
+
 import { alpha } from "@mui/material/styles";
-import { CommunitiesDetail } from "../../Components/UserDashboard/Communities/CommunitiesDetail/CommunitiesDetail";
 import { ComDashboard } from "../../Components/CompanyDashboard/ComDashboard/ComDashboard";
 import { ComJoborInternship } from "../../Components/CompanyDashboard/ComJoborInternship/ComJoborInternship";
 import { CreateJoborInternship } from "../../Components/CompanyDashboard/ComJoborInternship/CreateJoborInternship/CreateJoborInternship";
@@ -212,11 +212,13 @@ export const CompanyDashboard = () => {
               className="ml-6"
             >
               <Stack>
-                <Typography variant="h6" component="div">
-                  Dashboard
-                </Typography>
+                <Typography variant="h6" component="div"></Typography>
               </Stack>
-              <Stack direction={"row"} alignItems={"center"}>
+              <Stack
+                direction={"row"}
+                alignItems={"center"}
+                justifyContent={"space-between"}
+              >
                 <Search>
                   <SearchIconWrapper>
                     <SearchIcon />
@@ -247,54 +249,50 @@ export const CompanyDashboard = () => {
               <SidebarSelector
                 open={open}
                 text={"Dashboard"}
-                icon={icon_Building}
+                icon={icon_comdashboard}
               />
             </NavLink>
-            <SidebarSelector open={open} text={"Inbox"} icon={icon_inbox} />
+            <SidebarSelector
+              open={open}
+              text={"Responses"}
+              icon={icon_comresponse}
+            />
             <NavLink to="/companydashboard/joborinternship">
               <SidebarSelector
                 open={open}
-                text={"Internships"}
-                icon={icon_Building}
+                text={"Job/Internships"}
+                icon={icon_joborintern}
               />
             </NavLink>
             <NavLink to="/companydashboard/product">
               <SidebarSelector
                 open={open}
                 text={"Product"}
-                icon={icon_Building}
+                icon={icon_product}
               />
             </NavLink>
-            <SidebarSelector
-              open={open}
-              text={"Communities"}
-              icon={icon_PeopleCommunity}
-            />
             <NavLink to="/companydashboard/sponsorpool">
               <SidebarSelector
                 open={open}
                 text={"Sponsor Pool"}
-                icon={icon_Building}
-              />
-            </NavLink>
-            <NavLink to="/companydashboard/dashboard">
-              <SidebarSelector
-                open={open}
-                text={"Community Events"}
-                icon={icon_Building}
+                icon={icon_sponsorpool}
               />
             </NavLink>
             <SidebarSelector
               open={open}
-              text={"Resources"}
-              icon={icon_resources}
+              text={"Tech Events"}
+              icon={icon_techevents}
             />
-            <NavLink to="/companydashboard/dashboard">
+            <NavLink to="/companydashboard/">
               <SidebarSelector
                 open={open}
-                text={"Communities"}
-                icon={icon_Building}
+                text={"Merchandise"}
+                icon={icon_merchandise}
               />
+            </NavLink>
+            <SidebarSelector open={open} text={"Space"} icon={icon_space} />
+            <NavLink to="/companydashboard/">
+              <SidebarSelector open={open} text={"Food"} icon={icon_food} />
             </NavLink>
           </List>
           <Divider color={"white"} />

@@ -164,7 +164,7 @@ export const Dashboard = () => {
               <Grid container spacing={3}>
                 <Grid item xs={12} sm={6}>
                   <DashboardJobCard
-                    heading="Best product ever"
+                    heading="Junior Graphic Designer"
                     tag="Job"
                     ceoName="Hanan"
                     companyName="CEO Google"
@@ -173,7 +173,7 @@ export const Dashboard = () => {
                 </Grid>
                 <Grid item xs={12} sm={6}>
                   <DashboardJobCard
-                    heading="Best product ever"
+                    heading="Frontend Engineer"
                     tag="Job"
                     ceoName="Hanan"
                     companyName="CEO Google"
@@ -182,7 +182,7 @@ export const Dashboard = () => {
                 </Grid>
                 <Grid item xs={12} sm={6}>
                   <DashboardJobCard
-                    heading="Best product ever"
+                    heading="Full Stack Engineer (MEAN)"
                     tag="Job"
                     ceoName="Hanan"
                     companyName="CEO Google"

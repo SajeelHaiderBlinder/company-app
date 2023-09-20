@@ -21,13 +21,20 @@ export const DashboardJobCard = ({
           </Typography>
         </Stack>
       </Stack>
-      <Stack direction="row" spacing={2} alignItems="center">
-        <Avatar src={img} />
-        <Stack>
-          <Typography variant="subtitle1" sx={{ fontWeight: "bold" }}>
-            {ceoName}
-          </Typography>
-          <Typography variant="subtitle1">{companyName}</Typography>
+      <Stack
+        direction="row"
+        spacing={2}
+        alignItems="center"
+        justifyContent={"space-between"}
+      >
+        <Stack direction={"row"} alignItems={"center"} spacing={2}>
+          <Avatar src={img} />
+          <Stack>
+            <Typography variant="subtitle1" sx={{ fontWeight: "bold" }}>
+              {ceoName}
+            </Typography>
+            <Typography variant="subtitle1">{companyName}</Typography>
+          </Stack>
         </Stack>
         <IconButton aria-label="Save" color="black" sx={{ marginLeft: "auto" }}>
           <BookmarkBorderIcon />

@@ -1,7 +1,7 @@
 import { Stack, Typography } from "@mui/material";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-
+import GoogleLogo from "../../Assets/Header/Testimonials/GoogleLogo.png";
 import content from "../../StaticContent/Header/testimonials.json";
 import { TestimonialsCard } from "../../Utils/TestimonialsCard/TestimonialsCard";
 
@@ -43,6 +43,7 @@ export const Testimonials = () => {
         <Carousel responsive={responsive}>
           <Stack marginRight={"2rem"}>
             <TestimonialsCard
+              image={GoogleLogo}
               heading="Best product ever"
               body="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cumque,
             dicta. Omnis voluptatum laborum dignissimos, error laboriosam possimus
@@ -54,6 +55,7 @@ export const Testimonials = () => {
           </Stack>
           <Stack marginRight={"2rem"}>
             <TestimonialsCard
+              image={GoogleLogo}
               heading="Best product ever"
               body="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cumque,
             dicta. Omnis voluptatum laborum dignissimos, error laboriosam possimus
@@ -65,6 +67,7 @@ export const Testimonials = () => {
           </Stack>
           <Stack marginRight={"2rem"}>
             <TestimonialsCard
+              image={GoogleLogo}
               heading="Best product ever"
               body="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cumque,
             dicta. Omnis voluptatum laborum dignissimos, error laboriosam possimus
@@ -76,6 +79,7 @@ export const Testimonials = () => {
           </Stack>
           <Stack marginRight={"2rem"}>
             <TestimonialsCard
+              image={GoogleLogo}
               heading="Best product ever"
               body="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cumque,
             dicta. Omnis voluptatum laborum dignissimos, error laboriosam possimus

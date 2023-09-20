@@ -12,6 +12,8 @@ import { CommunitiesCard } from "../../../../Utils/CommunitiesCard/CommunitiesCa
 import { RoundButton } from "../../../../Styles/styledComponents/Buttons/RoundButton";
 import { MapContainer, TileLayer } from "react-leaflet";
 import { NetworkingCard } from "../../../../Utils/Networking/NetworkingCard";
+import gdsc from "../../../../Assets/UserDashboard/communities/community_gdsc.png";
+
 const InfoCard = ({ title, description }) => (
   <Paper elevation={12} sx={{ padding: "2%", borderRadius: "10px" }}>
     <Typography variant="h5">{title}</Typography>
@@ -29,7 +31,7 @@ export const CommunitiesDetail = () => {
   return (
     <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
       <DrawerHeader />
-      <Stack spacing={2}>
+      <Stack spacing={5}>
         <Stack
           direction={"row"}
           justifyContent={"space-around"}
@@ -45,7 +47,7 @@ export const CommunitiesDetail = () => {
             </Typography>
             <RoundButton maxWidth="150px"> Visit Site</RoundButton>
           </Stack>
-          <CommunitiesCard />
+          <CommunitiesCard image={gdsc} />
         </Stack>
         <Stack direction={"row"} spacing={2}>
           <InfoCard

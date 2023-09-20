@@ -35,6 +35,7 @@ import icon_community from "../../Assets/UserDashboard/icon_community.png";
 import icon_networking from "../../Assets/UserDashboard/icon_networking.png";
 import icon_internship from "../../Assets/UserDashboard/icon_internship.png";
 import icon_dashboard_btn from "../../Assets/UserDashboard/icon_dashboard_btn.png";
+import icon_events from "../../Assets/UserDashboard/icon_events.png";
 
 import { alpha } from "@mui/material/styles";
 import { CommunitiesDetail } from "../../Components/UserDashboard/Communities/CommunitiesDetail/CommunitiesDetail";
@@ -213,7 +214,7 @@ export const UserDashboard = () => {
             >
               <Stack>
                 <Typography variant="h6" component="div">
-                  Dashboard
+                  {/* Dashboard */}
                 </Typography>
               </Stack>
               <Stack direction={"row"} alignItems={"center"}>
@@ -265,23 +266,21 @@ export const UserDashboard = () => {
                 icon={icon_Building}
               />
             </NavLink>
-            <SidebarSelector
-              open={open}
-              text={"Communities"}
-              icon={icon_PeopleCommunity}
-            />
             <NavLink to="/userdashboard/networking">
               <SidebarSelector
                 open={open}
                 text={"Networking"}
-                icon={icon_Building}
+                icon={icon_networking}
               />
             </NavLink>
             <NavLink to="/userdashboard/events">
+              <SidebarSelector open={open} text={"Events"} icon={icon_events} />
+            </NavLink>
+            <NavLink to="/userdashboard/communities">
               <SidebarSelector
                 open={open}
-                text={"Community Events"}
-                icon={icon_Building}
+                text={"Communities"}
+                icon={icon_community}
               />
             </NavLink>
             <SidebarSelector
@@ -289,13 +288,6 @@ export const UserDashboard = () => {
               text={"Resources"}
               icon={icon_resources}
             />
-            <NavLink to="/userdashboard/communities">
-              <SidebarSelector
-                open={open}
-                text={"Communities"}
-                icon={icon_Building}
-              />
-            </NavLink>
           </List>
           <Divider color={"white"} />
         </Drawer>

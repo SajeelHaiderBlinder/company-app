@@ -14,7 +14,11 @@ const initialValues = {
 };
 
 export const SignupCompany = () => {
-  const [communityOptions, setCommunityOptions] = useState(["GDCS", "MLSA"]);
+  const [employeeOptions, setEmployeeOptions] = useState([
+    "1-10",
+    "10-50",
+    "50-100",
+  ]);
   const navigate = useNavigate();
   return (
     <Stack
@@ -56,37 +60,28 @@ export const SignupCompany = () => {
                   type="text"
                 />
                 <TextFieldWrapper
-                  name="lName"
-                  label="Your Last Name"
+                  name="linkedinProfile"
+                  label="Enter you Linkedin Profile"
                   type="text"
                 />
               </Stack>
-              <InputLabel>University Name</InputLabel>
               <TextFieldWrapper
-                name="uniName"
-                label="University Name"
+                name="websitw"
+                label="Company Website"
                 type="text"
               />
-              <Stack direction="row" spacing={2}>
-                <TextFieldWrapper name="degree" label="Degree" type="text" />
-                <TextFieldWrapper
-                  name="semester"
-                  label="Semester"
-                  type="text"
-                />
-              </Stack>
-              <InputLabel>Select Communities you are a part of</InputLabel>
+
+              <InputLabel>Select No of Employees</InputLabel>
               <Multiselect
                 className="custom-multiselect" // Apply your custom class here
                 isObject={false}
-                options={communityOptions}
-                placeholder="Communities"
+                options={employeeOptions}
+                placeholder="Select No of Emplyees"
                 required
               />
-              <InputLabel>Write a Short Intro about yourself</InputLabel>
               <TextFieldWrapper
-                name="introYourself"
-                label="Introduce Yourself"
+                name="offices"
+                label="No of Offices"
                 type="text"
                 height="4rem"
               />

@@ -42,7 +42,7 @@ export const ComDashboard = () => {
               Welcome to the Dashboard
             </Typography>
             <Typography fontWeight="bold" variant="h6">
-              Devsinc
+              Company
             </Typography>
           </Stack>
           <img src={icon_dashboard} alt="icon dashboard" />
@@ -60,22 +60,27 @@ export const ComDashboard = () => {
           </Typography>
           <Stack direction="row" spacing={3}>
             <DashboardJobCard
-              heading="Best product ever"
+              img={icon_dashboard}
+              heading="Frontend JS Developer"
               tag="Job"
-              ceoName="Usman Asif"
-              companyName="CEO Devsinc"
+              ceoName="Moiz"
+              companyName="CEO Company"
             />
             <DashboardJobCard
-              heading="Best product ever"
+              heading="Frontend JS Developer
+              "
+              img={icon_dashboard}
               tag="Job"
-              ceoName="Usman Asif"
-              companyName="CEO Devsinc"
+              ceoName="Moiz"
+              companyName="CEO Company"
             />
             <DashboardJobCard
-              heading="Best product ever"
+              img={icon_dashboard}
+              heading="Frontend JS Developer
+              "
               tag="Job"
-              ceoName="Usman Asif"
-              companyName="CEO Devsinc"
+              ceoName="Moiz"
+              companyName="CEO Company"
             />
           </Stack>
           <Typography
@@ -104,6 +109,15 @@ export const ComDashboard = () => {
           <Stack direction="row" spacing={3}>
             <CommunityEventCard />
           </Stack>
+          <Typography
+            variant="h6"
+            sx={{
+              textDecoration: "underline",
+              textDecorationColor: "#bf00c3",
+            }}
+          >
+            Product/MVPs
+          </Typography>
           <Grid container spacing={2}>
             {[1, 2, 3, 4].map((index) => (
               <Grid item xs={12} sm={6} md={3} key={index}>
