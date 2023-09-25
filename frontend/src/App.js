@@ -88,7 +88,7 @@ function App() {
           <Route path="communities" component={<Communities />}></Route>
         </Route>
         <Route path="/companydashboard" element={<CompanyDashboard />}>
-          <Route path="dashboard" element={<ComDashboard />} />{" "}
+          <Route path="dashboard" element={<ComDashboard />} />
           <Route
             path="joborinternship/createJoborIntern"
             element={<CreateJoborInternship />}

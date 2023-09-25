@@ -2,6 +2,7 @@ import { styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 
 import Typography from "@mui/material/Typography";
+import { PieChart, pieArcLabelClasses } from "@mui/x-charts/PieChart";
 
 import LinearProgress from "@mui/material/LinearProgress";
 import InputBase from "@mui/material/InputBase";
@@ -28,6 +29,9 @@ import github from "../../../Assets/UserDashboard/communities/community_github.p
 import gdsc from "../../../Assets/UserDashboard/communities/community_gdsc.png";
 import mlsa from "../../../Assets/UserDashboard/communities/community_mlsa.png";
 import { ProductCard } from "../../../Utils/ComDashboard/ProductCard";
+
+import { BarChart } from "@mui/x-charts/BarChart";
+
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
   borderRadius: theme.shape.borderRadius,
@@ -68,6 +72,59 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     },
   },
 }));
+const uData = [4000, 3000, 2000, 2780, 1890, 2390, 3490];
+const pData = [2400, 1398, 9800, 3908, 4800, 3800, 4300];
+
+const xLabels = [
+  "Page A",
+  "Page B",
+  "Page C",
+  "Page D",
+  "Page E",
+  "Page F",
+  "Page G",
+];
+
+const data = [
+  { label: "Group A", value: 400, color: "#0088FE" },
+  { label: "Group B", value: 300, color: "#00C49F" },
+  { label: "Group C", value: 300, color: "#FFBB28" },
+  { label: "Group D", value: 200, color: "#FF8042" },
+];
+
+const sizing = {
+  margin: { right: 5 },
+  width: 200,
+  height: 200,
+  legend: { hidden: true },
+};
+const TOTAL = data.map((item) => item.value).reduce((a, b) => a + b, 0);
+
+const getArcLabel = (params) => {
+  const percent = params.value / TOTAL;
+  return `${(percent * 100).toFixed(0)}%`;
+};
+
+// export default function PieChartWithCustomizedLabel() {
+//   return (
+//     <PieChart
+//       series={[
+//         {
+//           outerRadius: 80,
+//           data,
+//           arcLabel: getArcLabel,
+//         },
+//       ]}
+//       sx={{
+//         [`& .${pieArcLabelClasses.root}`]: {
+//           fill: 'white',
+//           fontSize: 14,
+//         },
+//       }}
+//       {...sizing}
+//     />
+//   );
+// }
 
 export const ComMvpProduct = () => {
   const navigate = useNavigate();
@@ -114,6 +171,45 @@ export const ComMvpProduct = () => {
               buttonText="Read More"
             />
           </Paper>
+        </Stack>
+        <Stack direction={"row"} alignItems={"center"}>
+          <PieChart
+            series={[
+              {
+                outerRadius: 80,
+                data,
+                arcLabel: getArcLabel,
+              },
+            ]}
+            sx={{
+              [`& .${pieArcLabelClasses.root}`]: {
+                fill: "white",
+                fontSize: 14,
+              },
+            }}
+            {...sizing}
+          />
+          <BarChart
+            width={500}
+            height={300}
+            series={[
+              {
+                data: pData,
+                label: "pv",
+                id: "pvId",
+                yAxisKey: "leftAxisId",
+              },
+              {
+                data: uData,
+                label: "uv",
+                id: "uvId",
+                yAxisKey: "rightAxisId",
+              },
+            ]}
+            xAxis={[{ data: xLabels, scaleType: "band" }]}
+            yAxis={[{ id: "leftAxisId" }, { id: "rightAxisId" }]}
+            rightAxis="rightAxisId"
+          />
         </Stack>
       </Stack>
     </Box>
