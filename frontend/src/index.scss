@@ -1,3 +1,25 @@
 .leaflet-container {
   height: 40vh;
 }
+.product-carousel {
+  position: relative;
+  overflow: hidden;
+}
+.sliderContainer {
+  padding: 0 10px;
+  display: flex;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+.prevBtn,
+.nextBtn {
+  border: none;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nexrBtn {
+  right: 0;
+}

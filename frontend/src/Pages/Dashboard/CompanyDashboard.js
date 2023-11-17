@@ -56,6 +56,7 @@ import { ComJoborInternship } from "../../Components/CompanyDashboard/ComJoborIn
 import { CreateJoborInternship } from "../../Components/CompanyDashboard/ComJoborInternship/CreateJoborInternship/CreateJoborInternship";
 import { ComSponsorPool } from "../../Components/CompanyDashboard/ComSponsorPool/ComSponsorPool";
 import { ComMvpProduct } from "../../Components/CompanyDashboard/ComMvpProduct/ComMvpProduct";
+import { ComTechEvents } from "../../Components/CompanyDashboard/ComTechEvents/ComTechEvents";
 const drawerWidth = 240;
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -146,7 +147,6 @@ const AppBar = styled(MuiAppBar, {
   }),
 
   boxShadow: "none",
-  borderRadius: "30px",
 }));
 
 const Drawer = styled(MuiDrawer, {
@@ -372,11 +372,13 @@ export const CompanyDashboard = () => {
                 icon={icon_sponsorpool}
               />
             </NavLink>
-            <SidebarSelector
-              open={open}
-              text={"Tech Events"}
-              icon={icon_techevents}
-            />
+            <NavLink to="/companydashboard/techevents">
+              <SidebarSelector
+                open={open}
+                text={"Tech Events"}
+                icon={icon_techevents}
+              />
+            </NavLink>
             <NavLink to="/companydashboard/">
               <SidebarSelector
                 open={open}
@@ -404,6 +406,7 @@ export const CompanyDashboard = () => {
           />
           <Route path="/product" element={<ComMvpProduct />}></Route>
           <Route path="/sponsorpool" element={<ComSponsorPool />}></Route>
+          <Route path="/techevents" element={<ComTechEvents />}></Route>
         </Routes>
       </Box>
     </>

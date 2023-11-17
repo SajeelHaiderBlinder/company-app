@@ -10,7 +10,7 @@ export const DashboardJobCard = ({
   img,
 }) => {
   return (
-    <Paper elevation={3} sx={{ padding: "1.5rem" }}>
+    <Paper elevation={3} sx={{ padding: "1.5rem", width: "80%" }}>
       <Stack>
         <Typography variant="h6" sx={{ fontWeight: "bold" }}>
           {heading}

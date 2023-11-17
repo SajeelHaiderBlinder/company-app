@@ -1,16 +1,19 @@
-import React from "react";
+import React, { useRef } from "react";
 import { styled, useTheme } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
 import Stack from "@mui/material/Stack";
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
 import Paper from "@mui/material/Paper";
 import { DashboardJobCard } from "../../../Utils/UserDashboard/DashboardJobCard/DashboardJobCard";
 import { RecruitmentJobCard } from "../../../Utils/Recruitment/RecruitmentJobCard/RecruitmentJobCard";
 import { CommunityEventCard } from "../../../Utils/Events/CommunityEventCard";
 import { MvpCard } from "../../../Utils/ComDashboard/MvpCard";
 
-import icon_dashboard from "../../../Assets/UserDashboard/icon_dashboard.png";
+import icon_dashboard from "../../../Assets/ComDashboard/block.png";
+import { TestimonialsCard } from "../../../Utils/TestimonialsCard/TestimonialsCard";
 
 const DrawerHeader = styled("div")(({ theme }) => ({
   display: "flex",
@@ -21,13 +24,45 @@ const DrawerHeader = styled("div")(({ theme }) => ({
 }));
 
 export const ComDashboard = () => {
+  const carouselRef = useRef(null);
+
   const [completionPercentage, setCompletionPercentage] = React.useState(50);
+  let box = document.querySelector(".sliderContainer");
+  const handleLeftSlide = () => {
+    if (carouselRef.current) {
+      carouselRef.current.scrollLeft -= 300; // Adjust the scroll amount as needed
+    }
+  };
+  const handleRightSlide = () => {
+    let width = box.clientWidth;
+    box.scrollLeft = box.scrollLeft + width;
+  };
+  const responsive = {
+    superLargeDesktop: {
+      breakpoint: { max: "100%", min: "75%" }, // Adjust as needed
+      items: 5,
+    },
+    desktop: {
+      breakpoint: { max: "75%", min: "50%" }, // Adjust as needed
+      items: 2.5,
+    },
+    tablet: {
+      breakpoint: { max: "50%", min: "25%" }, // Adjust as needed
+      items: 2,
+    },
+    mobile: {
+      breakpoint: { max: "25%", min: "0" }, // Adjust as needed
+      items: 1,
+    },
+  };
 
   return (
     <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
       <DrawerHeader />
       <Stack spacing={3}>
-        <Paper
+        <Stack
+          direction={"row"}
+          width={"75%"}
           sx={{
             backgroundColor: "#dadada",
             padding: "1%",
@@ -46,7 +81,7 @@ export const ComDashboard = () => {
             </Typography>
           </Stack>
           <img src={icon_dashboard} alt="icon dashboard" />
-        </Paper>
+        </Stack>
 
         <Stack spacing={2}>
           <Typography
@@ -58,31 +93,51 @@ export const ComDashboard = () => {
           >
             Jobs/Internships Created by You
           </Typography>
-          <Stack direction="row" spacing={3}>
-            <DashboardJobCard
-              img={icon_dashboard}
-              heading="Frontend JS Developer"
-              tag="Job"
-              ceoName="Moiz"
-              companyName="CEO Company"
-            />
-            <DashboardJobCard
-              heading="Frontend JS Developer
+
+          <Carousel responsive={responsive}>
+            <Stack direction="row" spacing={3}>
+              <DashboardJobCard
+                img={icon_dashboard}
+                heading="Frontend JS Developer"
+                tag="Job"
+                ceoName="Moiz"
+                companyName="CEO Company"
+              />
+              <DashboardJobCard
+                heading="Frontend JS Developer
               "
-              img={icon_dashboard}
-              tag="Job"
-              ceoName="Moiz"
-              companyName="CEO Company"
-            />
-            <DashboardJobCard
-              img={icon_dashboard}
-              heading="Frontend JS Developer
+                img={icon_dashboard}
+                tag="Job"
+                ceoName="Moiz"
+                companyName="CEO Company"
+              />
+              <DashboardJobCard
+                img={icon_dashboard}
+                heading="Frontend JS Developer
               "
-              tag="Job"
-              ceoName="Moiz"
-              companyName="CEO Company"
-            />
-          </Stack>
+                tag="Job"
+                ceoName="Moiz"
+                companyName="CEO Company"
+              />
+              <DashboardJobCard
+                img={icon_dashboard}
+                heading="Frontend JS Developer
+            "
+                tag="Job"
+                ceoName="Moiz"
+                companyName="CEO Company"
+              />
+              <DashboardJobCard
+                img={icon_dashboard}
+                heading="Frontend JS Developer
+            "
+                tag="Job"
+                ceoName="Moiz"
+                companyName="CEO Company"
+              />
+            </Stack>
+          </Carousel>
+
           <Typography
             variant="h6"
             sx={{

@@ -1,3 +1,4 @@
+import axios from "axios";
 import { Stack, Paper, Typography, TextField, Button } from "@mui/material";
 import { Formik, Form } from "formik";
 import { SignupSchema } from "../../Schemas/index";
@@ -6,7 +7,7 @@ import { TextFieldWrapper } from "../../Utils/Shared Components/TextFieldWrapper
 import { useNavigate } from "react-router";
 import { InputLabel } from "@mui/material";
 import Multiselect from "multiselect-react-dropdown";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./Signup.scss";
 
 const initialValues = {
@@ -17,12 +18,29 @@ const initialValues = {
   uniName: "",
   semester: "",
   degree: "",
-  introYourself: "",
+  communities: [],
 };
 
 export const SignupStudent = () => {
-  const [communityOptions, setCommunityOptions] = useState(["GDCS", "MLSA"]);
+  const [communityOptions, setCommunityOptions] = useState([]);
   const navigate = useNavigate();
+  const onCommunityChange = (selectedValues) => {
+    setCommunityOptions(selectedValues);
+  };
+  const fetchCommunities = async () => {
+    try {
+      const response = await axios.get(
+        "http://localhost:8080/api/community/getAllCommunities"
+      );
+      setCommunityOptions(response.data.communities);
+    } catch (error) {
+      console.error("Error fetching communities:", error);
+    }
+  };
+  useEffect(() => {
+    fetchCommunities();
+  }, []);
+
   return (
     <Stack
       direction="column"
@@ -39,8 +57,29 @@ export const SignupStudent = () => {
           Student Sign Up
         </Typography>
         <Formik
-          onSubmit={(values) => {
-            console.log(values);
+          onSubmit={async (values) => {
+            const registrationData = {
+              ...values,
+              communities: communityOptions,
+            };
+
+            const res = await fetch("/auth/registerstudent", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(registrationData),
+            })
+              .then((response) => response.json())
+              .then((data) => {
+                console.log(data);
+                if (data.success) {
+                  navigate("/userdashboard/dashboard");
+                }
+              })
+              .catch((error) => {
+                console.error("Error:", error);
+              });
           }}
           initialValues={initialValues}
           validationSchema={SignupSchema}
@@ -84,26 +123,21 @@ export const SignupStudent = () => {
               </Stack>
               <InputLabel>Select Communities you are a part of</InputLabel>
               <Multiselect
-                className="custom-multiselect" // Apply your custom class here
+                className="custom-multiselect"
                 isObject={false}
                 options={communityOptions}
                 placeholder="Communities"
                 required
+                onSelectedValuesChange={onCommunityChange} // Handle community selection
               />
-              <InputLabel>Write a Short Intro about yourself</InputLabel>
-              <TextFieldWrapper
-                name="introYourself"
-                label="Introduce Yourself"
-                type="text"
-                height="4rem"
-              />
+
               <FlatButton
                 type="submit"
                 variant="contained"
                 color="white"
                 fullWidth
                 backgroundColor="#bf00c3"
-                onClick={() => navigate("/userdashboard/dashboard")}
+                // onClick={() => navigate("/userdashboard/dashboard")}
               >
                 Sign Up
               </FlatButton>

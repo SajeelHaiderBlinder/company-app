@@ -1,6 +1,19 @@
 const passport = require("passport");
 const router = require("express").Router();
+const { registerValidation, loginValidation } = require("../validators/auth");
+const {
+  validationMiddleware,
+} = require("../middleware/validations-middleware");
+const {
+  registerStudent,
+  loginStudent,
+  protected,
+  logoutStudent,
+  getUsers,
+} = require("../controllers/auth/userController");
+const { userAuth } = require("../middleware/auth-middleware");
 
+//login with google
 router.get("/login/success", (req, res) => {
   if (req.user) {
     res.status(200).json({
@@ -37,5 +50,30 @@ router.get("/logout", (req, res) => {
   req.logout();
   res.redirect("http://localhost:3000/");
 });
+
+//student signup
+router.post(
+  "/registerstudent",
+  registerValidation,
+  validationMiddleware,
+  registerStudent
+);
+
+//protected route
+router.get("/protected", userAuth, protected);
+
+//login student
+router.post(
+  "/loginstudent",
+  loginValidation,
+  validationMiddleware,
+  loginStudent
+);
+
+//logout student
+router.get("/logoutstudent", userAuth, logoutStudent);
+
+//get all users
+router.get("/getUsers", getUsers);
 
 module.exports = router;

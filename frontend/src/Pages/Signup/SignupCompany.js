@@ -1,6 +1,6 @@
 import { Stack, Paper, Typography, TextField, Button } from "@mui/material";
 import { Formik, Form } from "formik";
-import { SignupSchema } from "../../Schemas/index";
+import { SignupSchemaCompany } from "../../Schemas/index";
 import { FlatButton } from "../../Styles/styledComponents/Buttons/FlatButton";
 import { TextFieldWrapper } from "../../Utils/Shared Components/TextFieldWrapper";
 import { useNavigate } from "react-router";
@@ -8,9 +8,17 @@ import { InputLabel } from "@mui/material";
 import Multiselect from "multiselect-react-dropdown";
 import { useState } from "react";
 import "./Signup.scss";
+
 const initialValues = {
   email: "",
   password: "",
+  ntnNumber: "",
+  foundersName: "",
+  companysName: "",
+  linkedinUrl: "",
+  companysWebsite: "",
+  noOfEmployees: "",
+  noOfOffices: "",
 };
 
 export const SignupCompany = () => {
@@ -27,7 +35,7 @@ export const SignupCompany = () => {
       alignItems="center"
       sx={{
         width: "100%",
-        height: "100vh",
+        height: "120vh",
         backgroundImage: "linear-gradient(to right, #393939 50%, #ffffff 50%)",
       }}
     >
@@ -43,44 +51,58 @@ export const SignupCompany = () => {
             console.log(values);
           }}
           initialValues={initialValues}
-          validationSchema={SignupSchema}
+          validationSchema={SignupSchemaCompany}
         >
           <Form>
             <Stack spacing={2}>
+              <TextFieldWrapper
+                name="email"
+                label="Email Address"
+                type="text"
+              />
+              <TextFieldWrapper
+                name="password"
+                label="Enter your Password"
+                type="password"
+              />
               <InputLabel>Founder's Name</InputLabel>
               <TextFieldWrapper
-                name="name"
+                name="foundersName"
                 label="Founder's Name"
                 type="text"
               />
               <Stack direction="row" spacing={2}>
                 <TextFieldWrapper
-                  name="companyName"
+                  name="companysName"
                   label="Enter Compnay's Name"
                   type="text"
                 />
                 <TextFieldWrapper
-                  name="linkedinProfile"
-                  label="Enter you Linkedin Profile"
+                  name="linkedinUrl"
+                  label="Company's Linkedin Profile"
                   type="text"
                 />
               </Stack>
               <TextFieldWrapper
-                name="websitw"
-                label="Company Website"
+                name="companysWebsite"
+                label="Company's Website"
                 type="text"
               />
-
+              <TextFieldWrapper
+                name="ntnNumber"
+                label="NTN Number"
+                type="text"
+              />
               <InputLabel>Select No of Employees</InputLabel>
               <Multiselect
-                className="custom-multiselect" // Apply your custom class here
+                className="custom-multiselect"
                 isObject={false}
                 options={employeeOptions}
                 placeholder="Select No of Emplyees"
                 required
               />
               <TextFieldWrapper
-                name="offices"
+                name="noOfOffices"
                 label="No of Offices"
                 type="text"
                 height="4rem"
@@ -91,7 +113,7 @@ export const SignupCompany = () => {
                 backgroundColor="#bf00c3"
                 color="white"
                 fullWidth
-                onClick={() => navigate("/companydashboard/dashboard")}
+                //onClick={() => navigate("/companydashboard/dashboard")}
               >
                 Sign Up
               </FlatButton>

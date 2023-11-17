@@ -22,6 +22,7 @@ import { ComJoborInternship } from "./Components/CompanyDashboard/ComJoborIntern
 import { CreateJoborInternship } from "./Components/CompanyDashboard/ComJoborInternship/CreateJoborInternship/CreateJoborInternship";
 import { ComMvpProduct } from "./Components/CompanyDashboard/ComMvpProduct/ComMvpProduct";
 import { ComSponsorPool } from "./Components/CompanyDashboard/ComSponsorPool/ComSponsorPool";
+import { ComTechEvents } from "./Components/CompanyDashboard/ComTechEvents/ComTechEvents";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -101,6 +102,7 @@ function App() {
           </Route>
           <Route path="product" element={<ComMvpProduct />}></Route>
           <Route path="sponsorpool" element={<ComSponsorPool />}></Route>
+          <Route path="techevents" element={<ComTechEvents />}></Route>
         </Route>
 
         <Route path="*" element={<>Page not found</>} />
