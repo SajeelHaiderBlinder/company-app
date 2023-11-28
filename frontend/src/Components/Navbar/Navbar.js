@@ -43,7 +43,7 @@ export const Navbar = ({ user, setUser }) => {
             style={{ width: "50px", height: "30px", marginRight: "10px" }}
           />
           <Typography variant="body1" sx={{ color: "black" }}>
-            Confinity
+            Confiniti
           </Typography>
         </Stack>
         <IconButton

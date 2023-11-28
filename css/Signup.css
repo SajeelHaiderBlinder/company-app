@@ -1,0 +1,15 @@
+.custom-multiselect {
+  color: black;
+  font-family: Arial, sans-serif;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+}
+
+.custom-multiselect .option {
+  background-color: #bf00c3;
+  color: white;
+}
+.custom-multiselect .option:hover {
+  background-color: #690073;
+}/*# sourceMappingURL=Signup.css.map */

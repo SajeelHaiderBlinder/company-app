@@ -89,20 +89,29 @@ function App() {
           <Route path="communities" component={<Communities />}></Route>
         </Route>
         <Route path="/companydashboard" element={<CompanyDashboard />}>
-          <Route path="dashboard" element={<ComDashboard />} />
+          <Route path="dashboard/:company_id" element={<ComDashboard />} />
           <Route
-            path="joborinternship/createJoborIntern"
+            path="joborinternship/createJoborIntern/:company_id"
             element={<CreateJoborInternship />}
           />
-          <Route path="joborinternship" element={<ComJoborInternship />}>
+          <Route
+            path="joborinternship/:company_id"
+            element={<ComJoborInternship />}
+          >
             <Route
-              path="createJoborIntern"
+              path="createJoborIntern/:company_id"
               element={<CreateJoborInternship />}
             />
           </Route>
-          <Route path="product" element={<ComMvpProduct />}></Route>
-          <Route path="sponsorpool" element={<ComSponsorPool />}></Route>
-          <Route path="techevents" element={<ComTechEvents />}></Route>
+          <Route path="product/:company_id" element={<ComMvpProduct />}></Route>
+          <Route
+            path="sponsorpool/:company_id"
+            element={<ComSponsorPool />}
+          ></Route>
+          <Route
+            path="techevents/:company_id"
+            element={<ComTechEvents />}
+          ></Route>
         </Route>
 
         <Route path="*" element={<>Page not found</>} />

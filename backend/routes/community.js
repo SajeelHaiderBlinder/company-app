@@ -1,10 +1,10 @@
 const express = require("express");
 const router = express.Router();
-const db = require("../database/db"); // Adjust the path based on your project structure
+const db = require("../database/db");
 
 router.get("/getAllCommunities", async (req, res) => {
   try {
-    const data = await db.query("SELECT * FROM communities");
+    const data = await db.query("SELECT * FROM community");
     const communities = data.rows;
 
     res.json({ communities });

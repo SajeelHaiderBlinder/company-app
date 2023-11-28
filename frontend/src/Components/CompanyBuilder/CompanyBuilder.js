@@ -28,7 +28,7 @@ export const CompanyBuilder = () => {
               marginRight: "2%",
             }}
           >
-            Confinity&#174;
+            Confiniti&#174;
           </span>
           for Software Houses - Elevate your Talent Acquisition.
         </Typography>

@@ -27,16 +27,22 @@ export const SignupStudent = () => {
   const onCommunityChange = (selectedValues) => {
     setCommunityOptions(selectedValues);
   };
+
   const fetchCommunities = async () => {
     try {
       const response = await axios.get(
         "http://localhost:8080/api/community/getAllCommunities"
       );
-      setCommunityOptions(response.data.communities);
+
+      const communityNames = response.data.communities.map(
+        (community) => community.name
+      );
+      setCommunityOptions(communityNames);
     } catch (error) {
       console.error("Error fetching communities:", error);
     }
   };
+
   useEffect(() => {
     fetchCommunities();
   }, []);

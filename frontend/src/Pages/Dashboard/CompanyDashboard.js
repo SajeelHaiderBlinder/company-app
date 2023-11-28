@@ -339,7 +339,7 @@ export const CompanyDashboard = () => {
             </Stack>
           </DrawerHeader>
           <List sx={{ marginTop: "2rem" }}>
-            <NavLink to="/companydashboard/dashboard">
+            <NavLink to="/companydashboard/dashboard/:company_id">
               <SidebarSelector
                 open={open}
                 text={"Dashboard"}
@@ -351,28 +351,28 @@ export const CompanyDashboard = () => {
               text={"Responses"}
               icon={icon_comresponse}
             />
-            <NavLink to="/companydashboard/joborinternship">
+            <NavLink to="/companydashboard/joborinternship/:company_id">
               <SidebarSelector
                 open={open}
                 text={"Job/Internships"}
                 icon={icon_joborintern}
               />
             </NavLink>
-            <NavLink to="/companydashboard/product">
+            <NavLink to="/companydashboard/product/:company_id">
               <SidebarSelector
                 open={open}
                 text={"Product"}
                 icon={icon_product}
               />
             </NavLink>
-            <NavLink to="/companydashboard/sponsorpool">
+            <NavLink to="/companydashboard/sponsorpool/:company_id">
               <SidebarSelector
                 open={open}
                 text={"Sponsor Pool"}
                 icon={icon_sponsorpool}
               />
             </NavLink>
-            <NavLink to="/companydashboard/techevents">
+            <NavLink to="/companydashboard/techevents/:company_id">
               <SidebarSelector
                 open={open}
                 text={"Tech Events"}
@@ -395,18 +395,27 @@ export const CompanyDashboard = () => {
         </Drawer>
 
         <Routes>
-          <Route path="/dashboard" element={<ComDashboard />} />
+          <Route path="/dashboard/:company_id" element={<ComDashboard />} />
           <Route
-            path="/joborinternship"
+            path="/joborinternship/:company_id"
             element={<ComJoborInternship />}
           ></Route>
           <Route
-            path="/joborinternship/createJoborIntern"
+            path="/joborinternship/createJoborIntern/:company_id"
             element={<CreateJoborInternship />}
           />
-          <Route path="/product" element={<ComMvpProduct />}></Route>
-          <Route path="/sponsorpool" element={<ComSponsorPool />}></Route>
-          <Route path="/techevents" element={<ComTechEvents />}></Route>
+          <Route
+            path="/product/:company_id"
+            element={<ComMvpProduct />}
+          ></Route>
+          <Route
+            path="/sponsorpool/:company_id"
+            element={<ComSponsorPool />}
+          ></Route>
+          <Route
+            path="/techevents/:company_id"
+            element={<ComTechEvents />}
+          ></Route>
         </Routes>
       </Box>
     </>

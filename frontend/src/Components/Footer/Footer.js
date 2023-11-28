@@ -22,11 +22,10 @@ export const Footer = () => {
         <Grid item xs={12} md={6}>
           <Stack>
             <Typography variant="h4" color="white">
-              Confinity
+              Confiniti
             </Typography>
             <Typography variant="subtitle1" color="white">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Suspendisse varius enim in eros elementum tristique.
+              Where opportunities meet
             </Typography>
           </Stack>
         </Grid>

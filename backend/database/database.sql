@@ -41,7 +41,7 @@ CREATE TABLE company_details (
     ntn varchar(50) not null,
     founder_name varchar(255) not null,
     no_of_employees varchar(100) not null,
-    no_of_offices INT not null,
+    no_of_offices varchar(100) not null,
     website_url varchar(255) not null,
     linkedin_url varchar(255) not null,
     PRIMARY KEY (company_details_id, company_id),

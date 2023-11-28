@@ -20,7 +20,7 @@ export const CommunityBuilder = () => {
             fontSize: { xs: "2.5rem", md: "3rem" },
           }}
         >
-          Confinity&#174; for Community Building
+          Confiniti&#174; for Community Building
           <Typography
             variant="h2"
             sx={{

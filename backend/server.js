@@ -8,8 +8,9 @@ const session = require("express-session");
 const passportSetup = require("./passport");
 const authRoute = require("./routes/auth");
 const communityRoute = require("./routes/community");
+const companyRoute = require("./routes/company");
 const db = require("./database/db");
-const { PORT, CLIENT_URL } = require("./constants");
+const { PORT, CLIENT_URL, SERVER_URL } = require("./constants");
 const app = express();
 
 app.use(cookieParser());
@@ -26,14 +27,16 @@ app.use(passport.session());
 
 app.use(
   cors({
-    origin: CLIENT_URL,
+    origin: "http://localhost:3000",
     methods: "GET,POST,PUT,DELETE",
     credentials: true,
   })
 );
 
+app.use(express.json());
 app.use("/auth", authRoute);
 // app.use("/api", )
 app.use("/api/community", communityRoute);
+app.use("/api/company", companyRoute);
 
 app.listen(PORT, () => console.log(`Listening on PORT: ${PORT} ...`));

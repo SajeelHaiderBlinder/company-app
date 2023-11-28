@@ -1,13 +1,21 @@
-import { Stack, Paper, Typography, TextField, Button } from "@mui/material";
-import { Formik, Form } from "formik";
+import {
+  Stack,
+  Paper,
+  Typography,
+  TextField,
+  Button,
+  MenuItem,
+} from "@mui/material";
+import { Formik, Form, Field } from "formik";
 import { SignupSchemaCompany } from "../../Schemas/index";
 import { FlatButton } from "../../Styles/styledComponents/Buttons/FlatButton";
 import { TextFieldWrapper } from "../../Utils/Shared Components/TextFieldWrapper";
 import { useNavigate } from "react-router";
-import { InputLabel } from "@mui/material";
+import { InputLabel, Select } from "@mui/material";
 import Multiselect from "multiselect-react-dropdown";
 import { useState } from "react";
 import "./Signup.scss";
+import axios from "axios";
 
 const initialValues = {
   email: "",
@@ -41,14 +49,27 @@ export const SignupCompany = () => {
     >
       <Paper elevation={3} sx={{ padding: "2rem", borderRadius: "20px" }}>
         <Typography
-          variant="h5"
+          variant="h4"
           sx={{ color: "black", marginBottom: "1rem", fontWeight: "bold" }}
         >
           Company Sign Up
         </Typography>
         <Formik
-          onSubmit={(values) => {
+          onSubmit={async (values) => {
             console.log(values);
+            try {
+              const response = await axios.post(
+                "http://localhost:8080/api/company/registerCompany",
+                values
+              );
+
+              console.log(response.data);
+              const company_id = response.data.id;
+              // Redirect or handle success as needed
+              navigate(`/companydashboard/dashboard/${company_id}`);
+            } catch (error) {
+              console.error("Error submitting form:", error.message);
+            }
           }}
           initialValues={initialValues}
           validationSchema={SignupSchemaCompany}
@@ -65,7 +86,6 @@ export const SignupCompany = () => {
                 label="Enter your Password"
                 type="password"
               />
-              <InputLabel>Founder's Name</InputLabel>
               <TextFieldWrapper
                 name="foundersName"
                 label="Founder's Name"
@@ -94,13 +114,21 @@ export const SignupCompany = () => {
                 type="text"
               />
               <InputLabel>Select No of Employees</InputLabel>
-              <Multiselect
-                className="custom-multiselect"
-                isObject={false}
-                options={employeeOptions}
-                placeholder="Select No of Emplyees"
+
+              <Field
+                name="noOfEmployees"
+                as={Select}
+                fullWidth
+                label="Select No of Employees"
+                variant="outlined"
                 required
-              />
+              >
+                {employeeOptions.map((option) => (
+                  <MenuItem key={option} value={option}>
+                    {option}
+                  </MenuItem>
+                ))}
+              </Field>
               <TextFieldWrapper
                 name="noOfOffices"
                 label="No of Offices"
