@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/static/css/main.38ff37bb.css",
+    "main.js": "/static/js/main.55a20485.js",
+    "static/media/profilePic.png": "/static/media/profilePic.fac5e086fb244529e22c.png",
+    "static/media/LogoBlack.png": "/static/media/LogoBlack.189658cfe0ff252d5758.png",
+    "static/media/connect-logos.png": "/static/media/connect-logos.9f830e582242f510b3c7.png",
+    "static/media/map.png": "/static/media/map.5c4c1d21f3b5a73815cf.png",
+    "static/media/community.png": "/static/media/community.e39c45c6a0377844f2fc.png",
+    "static/media/buildings.png": "/static/media/buildings.7b36fa98279f462efd08.png",
+    "static/media/revicons.eot": "/static/media/revicons.a77de540a38981833f9e.eot",
+    "static/media/revicons.ttf": "/static/media/revicons.57fd05d4ae650374c8de.ttf",
+    "static/media/revicons.woff": "/static/media/revicons.e8746a624ed098489406.woff",
+    "index.html": "/index.html",
+    "main.38ff37bb.css.map": "/static/css/main.38ff37bb.css.map",
+    "main.55a20485.js.map": "/static/js/main.55a20485.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.38ff37bb.css",
+    "static/js/main.55a20485.js"
+  ]
+}
