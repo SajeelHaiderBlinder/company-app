@@ -59,7 +59,7 @@ export const SignupCompany = () => {
             console.log(values);
             try {
               const response = await axios.post(
-                "http://localhost:8080/api/company/registerCompany",
+                "${process.env.REACT_APP_API_URL}/api/company/registerCompany",
                 values
               );
 

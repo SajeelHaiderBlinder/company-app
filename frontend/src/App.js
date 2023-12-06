@@ -29,7 +29,7 @@ function App() {
 
   const getUser = async () => {
     try {
-      const url = "http://localhost:8080/auth/login/success";
+      const url = `${process.env.REACT_APP_API_URL}/auth/login/success`;
       const response = await fetch(url, { credentials: "include" });
       const data = await response.json();
       console.log(data);
@@ -42,7 +42,7 @@ function App() {
 
   // const getUser = async () => {
   //   try {
-  //     const url = `http://localhost:8080/auth/login/success`;
+  //     const url = `${process.env.REACT_APP_API_URL}/auth/login/success`;
   //     const { data } = await axios
   //       .get(url, { withCredentails: true })
   //       .then((result) => {

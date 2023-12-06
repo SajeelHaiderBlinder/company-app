@@ -16,7 +16,7 @@ import "./Navbar.scss";
 
 export const Navbar = ({ user, setUser }) => {
   const handleLogout = () => {
-    window.open(`http://localhost:8080/auth/logout`, "_self");
+    window.open(`${process.env.REACT_APP_API_URL}/auth/logout`, "_self");
   };
   const [anchorEl, setAnchorEl] = useState(null);
 

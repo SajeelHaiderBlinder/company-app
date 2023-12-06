@@ -31,7 +31,7 @@ export const SignupStudent = () => {
   const fetchCommunities = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:8080/api/community/getAllCommunities"
+        `${process.env.REACT_APP_API_URL}/api/community/getAllCommunities`
       );
 
       const communityNames = response.data.communities.map(
@@ -69,7 +69,7 @@ export const SignupStudent = () => {
               communities: communityOptions,
             };
 
-            const res = await fetch("/auth/registerstudent", {
+            const res = await fetch(`${process.env.REACT_APP_API_URL}/auth/registerstudent`, {
               method: "POST",
               headers: {
                 "Content-Type": "application/json",

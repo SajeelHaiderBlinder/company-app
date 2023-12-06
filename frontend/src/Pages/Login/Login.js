@@ -27,7 +27,7 @@ export const Login = () => {
   const navigate = useNavigate();
   const isLargeScreen = useMediaQuery((theme) => theme.breakpoints.up("md"));
   const handleGoogleAuth = () => {
-    window.open(`http://localhost:8080/auth/google/callback`, "_self");
+    window.open(`${process.env.REACT_APP_API_URL}/auth/google/callback`, "_self");
   };
   return (
     <Stack
