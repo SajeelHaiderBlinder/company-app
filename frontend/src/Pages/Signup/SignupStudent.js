@@ -31,9 +31,8 @@ export const SignupStudent = () => {
   const fetchCommunities = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:8080/api/community/getAllCommunities"
+        `${process.env.REACT_APP_SERVER_URL}/api/community/getAllCommunities`
       );
-
       const communityNames = response.data.communities.map(
         (community) => community.name
       );
@@ -44,6 +43,8 @@ export const SignupStudent = () => {
   };
 
   useEffect(() => {
+    console.log(process.env.REACT_APP_SERVER_URL);
+
     fetchCommunities();
   }, []);
 

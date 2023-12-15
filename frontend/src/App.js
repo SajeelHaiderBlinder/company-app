@@ -8,6 +8,7 @@ import { SignupCommunity } from "./Pages/Signup/SignupCommunity";
 import { Join } from "./Pages/Join/Join";
 import { useEffect, useState } from "react";
 import axios from "axios";
+
 import { UserDashboard } from "./Pages/Dashboard/UserDashboard";
 import { Dashboard } from "./Components/UserDashboard/Dashboard/Dashboard";
 import { Recruitment } from "./Components/UserDashboard/Recruitment/Recruitment";
@@ -29,7 +30,7 @@ function App() {
 
   const getUser = async () => {
     try {
-      const url = "http://localhost:8080/auth/login/success";
+      const url = `${process.env.REACT_APP_SERVER_URL}auth/login/success`;
       const response = await fetch(url, { credentials: "include" });
       const data = await response.json();
       console.log(data);
